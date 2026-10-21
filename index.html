@@ -4,22 +4,201 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CANTINE YOUCODE</title>
+        <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
         <link rel="stylesheet" href="style3.css">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+
+        <style type="text/tailwindcss">
+         @custom-variant dark (&:where(.dark, .dark *));
+         .card {
+         @apply flex items-start gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm
+            dark:border-stone-700 dark:bg-stone-800;
+         }
+        </style>
+
     </head>
-    <body>
-        <header>
-            <h1>CANTINE YOUCODE</h1>
-            <nav>
-             <title>Menu Atelier</title>
-             <title>Planificateur culinaire</title>
+ 
+    <body class="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-100">
+        
+
+        <header class="border-b border-stone-200 bg-white 
+        dark:boder-stone-700 dark:bg-stone-800">
+            <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+            
+                <a href="/" class="flex items-center gap-3">
+                <img src="icons/logo.svg" alt="Logo Cantine Youcode" class="h-12 w-12" >
+                <div>
+                <p class="text-x1 font-bold leading-tight">
+                    Cantine YouCode</p>
+                <p class="text-sm text-stone-500 
+                dark:text-stone-400">
+                    Planificateur de menus</p>
+                </div>
+            </a>
+            
+            
+            
+            
+            <nav aria-label="Options d affichage">
+                <button type="button" id="them-toggle" aria-label="activer le mode sombre" 
+                class="rounded-xl border border-stone-200 bg-white px-3 py-2 text-lg hover:bg-stone-100
+                dark:border-stone-600 dark:bg-stone-800 dark:hover:bg-stone-700">
+                Mode sombre 🌙
+                </button>
             </nav>
+
+            </div>
         </header>
-        <main>
-            <section id="reserve">
-                <h2 id="titre-reserve">Reserve de recettes</h2>
+
+        <main class="mx-auto max-w-6xl px-6 py-10">
+
+            <section class="mb-8">
+                <p class="text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+                Menu de la semaine</p>
+                <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
+                    Une semaine équilibrée, sans dépasser le budget.</h1>
+                <span>Composez les menus du lundi au vendredi avec un plafond de 50 DH par jour et par apprenant.</span>
             </section>
-            <section id="planning">
-                <h2 id="titre-planning">Menu de la semaine</h2>
+
+            <div class="jours/cout">
+                <section class="container-article grid lg:grid-cols-5 gap-4 sm:grid-cols-.2">
+                <article id="reserve">
+                    <h2 id="titre-reserve">Recettes en réserve <span id="compteur">0</span></h2>
+                </article>
+            
+                <article id="jours">
+                    <h2 id="titre-jours">Jours prêts <span id="compteur">0</span></h2>
+                </article>
+
+                <article id="cout">
+                    <h2 id="titre-cout">Coût du jour <span id="compteur">0</span></h2>
+                </article>
+
+                <article id="semaine">
+                    <h2 id="cout_semaine">Coût de la semaine <span id="compteur">0</span></h2>
+                </article>
+
+                <article id="equilibre">
+                    <h2 id="titre_equilibre">Équilibre alimentaire <span id="compteur">0</span></h2>
+                </article>
+
+            </div>
+            <div>
+                <select  class="border-gray-300 border w-full p-3 mt-4 rounded-lg text-center shadow-lg text-slate-700 font-semibold">
+                    <option>Réserve de recette</option>
+                </select>
+            </div>
+            </section>
+            </div>
+
+            <section class="section-Ajouter border-1 border-gray-300 mt-3 shadow-2xl rounded-xl" >
+                <div class="border-b-1 p-3 border-gray-300 ">
+                    <div class="flex justify-between"><h3 class="font-bold text-xl">Réserve de recettes <p class="text-sm text-gray-500">3 disponible</p></h3> <input type="submit" value="Ajouter" id="Ajouter" class="bg-green-600 h-8 w-20 rounded-md text-white  "> </div>
+                    <div> <input type="text" name="recherche" class="border border-gray-400 rounded w-full mt-2 p-2" id="recherche" placeholder=" Rechercher...."></div>
+                    <div class="flex justify-around mt-2">
+                        <p class=" text-gray-500 bg-gray-200 p-2 rounded-3xl">Entrérs</p>
+                        <p class="border border-gray-500 text-gray-500 bg-gray-300 p-2 rounded-3xl">Plats</p>
+                        <p class="border border-gray-500 text-gray-500 bg-gray-300 p-2 rounded-3xl">Desserts</p>
+                        <p class="border border-gray-500 text-gray-500 bg-gray-300 p-2 rounded-3xl">Tout</p>
+                    </div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>ENTEE</span><span>Bio</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Velouté de légumes</h4>
+                        <p>5 DH</p>
+                       
+                    </div>
+                    <div>[Assigné:Lundi-Entrée]</div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>PLAT PRINCIPAL</span><span>Classique</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Tajine de poulet</h4>
+                        <p>25 DH</p>
+                       
+                    </div>
+                    <div>[Assigné:Lundi-plat]</div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>DESSERT</span><span>Bio</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Fruits de saisson</h4>
+                        <p>10 DH</p>
+                       
+                    </div>
+                    <div>[Assigné:Lundi-Dessert]</div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>ENTEE</span><span>Végétarien</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Salade marocaine</h4>
+                        <p>7 DH</p>
+                       
+                    </div>
+                    <div>[Assigné:Mardi-Entrée]</div>
+                </div>
+                <div class="task">
+                   <div>
+                        <p><span>PLAT PRINCIPAL</span><span>Végétarien</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>VCouscous aux légumes</h4>
+                        <p>28 DH</p>
+                       
+                    </div>
+                    <div>[Assigné:Mardi-Plat]</div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>DESSER</span><span>Classique</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Pastilla au lait</h4>
+                        <p>9 DH</p>
+                       
+                    </div>
+                    <div></div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>ENTEE</span><span>Végétarien</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Briouates au fromage</h4>
+                        <p>8 DH</p>
+                       
+                    </div>
+                    <div></div>
+                </div>
+                <div class="task">
+                    <div>
+                        <p><span>PLAT PRINCIPAL</span><span>Classique</span></p>
+                        <p><span>pen</span><span>trash</span></p>
+                   </div>
+                    <div>
+                        <h4>Kefta au oeufs</h4>
+                        <p>24 DH</p>
+                       
+                    </div>
+                    <div></div>
+                </div>
             </section>
         </main>
         <footer>
