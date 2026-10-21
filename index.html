@@ -94,58 +94,122 @@
 
             <section class="section-Ajouter border-1 border-gray-300 mt-3 shadow-2xl rounded-xl" >
                 <div class="border-b-1 p-3 border-gray-300 ">
-                    <div class="flex justify-between"><h3 class="font-bold text-xl">Réserve de recettes <p class="text-sm text-gray-500">3 disponible</p></h3> <input type="submit" value="Ajouter" id="Ajouter" class="bg-green-600 h-8 w-20 rounded-md text-white  "> </div>
-                    <div> <input type="text" name="recherche" class="border border-gray-400 rounded w-full mt-2 p-2" id="recherche" placeholder=" Rechercher...."></div>
-                    <div class="flex justify-around mt-2">
-                        <p class=" text-gray-500 bg-gray-200 p-2 rounded-3xl">Entrérs</p>
-                        <p class="border border-gray-500 text-gray-500 bg-gray-300 p-2 rounded-3xl">Plats</p>
-                        <p class="border border-gray-500 text-gray-500 bg-gray-300 p-2 rounded-3xl">Desserts</p>
-                        <p class="border border-gray-500 text-gray-500 bg-gray-300 p-2 rounded-3xl">Tout</p>
+                    <div class="flex justify-between">
+                        <h2 class="font-bold text-xl">
+                        Réserve de recettes 
+                        <p class="text-sm text-gray-500">
+                        3 disponible
+                        </p>
+                    </h2> 
+                       <input type="submit" value="Ajouter" id="Ajouter" class="bg-green-600 h-8 w-20 rounded-md text-white  "> 
                     </div>
-                </div>
-                <div class="task">
-                    <div>
-                        <p><span>ENTEE</span><span>Bio</span></p>
-                        <p><span>pen</span><span>trash</span></p>
-                   </div>
-                    <div>
+
+                    <div> 
+                        <input type="text" name="recherche" class="border border-gray-400 rounded w-full mt-2 p-2" id="recherche" placeholder=" Rechercher....">
+                    </div>
+                    <div id="filters"
+                    class="mt-4 flex flex-wrap gap-2"
+                    role="group"
+                    aria-label="Filter par categorie">
+
+                        <button type="button"
+                        data-filter="all"
+                        aria-pressed="true"
+                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        aria-pressed:bg-emerald-700
+                        aria-pressed:text-white">
+                        Tout</button>
+
+                        <button type="button"
+                        data-filter="entree"
+                        aria-pressed="false"
+                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        aria-pressed:bg-emerald-700
+                        aria-pressed:text-white">
+                        Entrées</button>
+
+                        <button type="button"
+                        data-filter="plat"
+                        aria-pressed="false"
+                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        aria-pressed:bg-emerald-700
+                        aria-pressed:text-white">                      
+                        Plats</button>
+                        
+                        <button type="button"
+                        data-filter="dessert"
+                        aria-pressed="false"
+                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        aria-pressed:bg-emerald-700
+                        aria-pressed:text-white">                        
+                        Desserts</button>
+                    
+                    </div>
+
+                <ul>
+                    <li>
+                        <div>
+                        <p>
+                            <span>ENTEE</span>
+                            <span>Bio</span>
+                        </p>
+                        <p>
+                            <button>✏️</button>
+                            <button>🗑️</button>
+                        </p>
+                        </div>
+
                         <h4>Velouté de légumes</h4>
                         <p>5 DH</p>
-                       
-                    </div>
-                    <div>[Assigné:Lundi-Entrée]</div>
-                </div>
-                <div class="task">
+                        <p>✓ [Assigné:Lundi-Entrée]</p>
+                    </li>
+
+                    <li>
                     <div>
-                        <p><span>PLAT PRINCIPAL</span><span>Classique</span></p>
-                        <p><span>pen</span><span>trash</span></p>
+                        <p>
+                            <span>Entrée</span>
+                            <span>Végétarien</span>
+                        </p>
+                        <p>
+                            <button>✏️</button>
+                            <button>🗑️</button>
+                        </p>
                    </div>
+
+                    <h4>Salade marocaine</h4>
+                    <p>7 DH</p>
+                    <p>✓ [Assigné:Mardi-Entrée]</p>
+                </li>
+
+                <li>
                     <div>
-                        <h4>Tajine de poulet</h4>
-                        <p>25 DH</p>
-                       
-                    </div>
-                    <div>[Assigné:Lundi-plat]</div>
-                </div>
-                <div class="task">
-                    <div>
-                        <p><span>DESSERT</span><span>Bio</span></p>
-                        <p><span>pen</span><span>trash</span></p>
+                        <p>
+                            <span>Entrée</span>
+                            <span>Végétarien</span>
+                        </p>
+                        <p>
+                            <button>✏️</button>
+                            <button>🗑️</button>
+                        </p>
                    </div>
+            
+                   <h4>Briouates au fromage</h4>
+                    <p>8 DH</p>
+                </li>
+
+                <li>
                     <div>
-                        <h4>Fruits de saisson</h4>
-                        <p>10 DH</p>
-                       
+                        <p>
+                            <span>Plat principal</span>
+                            <span>Classique</span>
+                        </p>
+                        <p>
+                            <button>✏️</button>
+                            <button>🗑️</button>
+                        </p>
                     </div>
-                    <div>[Assigné:Lundi-Dessert]</div>
-                </div>
-                <div class="task">
-                    <div>
-                        <p><span>ENTEE</span><span>Végétarien</span></p>
-                        <p><span>pen</span><span>trash</span></p>
-                   </div>
-                    <div>
-                        <h4>Salade marocaine</h4>
+                        
+                    <h4>Salade marocaine</h4>
                         <p>7 DH</p>
                        
                     </div>
@@ -157,7 +221,7 @@
                         <p><span>pen</span><span>trash</span></p>
                    </div>
                     <div>
-                        <h4>VCouscous aux légumes</h4>
+                        <h4>Couscous aux légumes</h4>
                         <p>28 DH</p>
                        
                     </div>
