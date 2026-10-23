@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CANTINE YOUCODE</title>
-        <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-        <link rel="stylesheet" href="style3.css">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        
 
-        <style type="text/tailwindcss">
-         @custom-variant dark (&:where(.dark, .dark *));
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANTINE YOUCODE</title>
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+    <link rel="stylesheet" href="style3.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
          .card {
          @apply flex items-start gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm
             dark:border-stone-700 dark:bg-stone-800;
          }
         </style>
-        
-        <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
-        
-    </head>
- 
-    <body class="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-100">
-        
 
-        <header class="border-b border-stone-200 bg-white 
+    <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-100">
+
+
+    <header class="border-b border-stone-200 bg-white 
         dark:boder-stone-700 dark:bg-stone-800">
-            <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-            
-                <a href="/" class="flex items-center gap-3">
-                    <img src="icons/logo.svg" alt="Logo Cantine Youcode" class="h-12 w-12" >
-                    <div>
-                        <p class="text-x1 font-bold leading-tight">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+
+            <a href="/" class="flex items-center gap-3">
+                <img src="icons/logo.svg" alt="Logo Cantine Youcode" class="h-12 w-12">
+                <div>
+                    <p class="text-x1 font-bold leading-tight">
                         Cantine YouCode</p>
-                        <p class="text-sm text-stone-500 
+                    <p class="text-sm text-stone-500 
                          dark:text-stone-400">
                         Planificateur de menus</p>
-                    </div>
-                </a>
-            
-            
-                <nav aria-label="Options d affichage">
-                    <button type="button" id="them-toggle" aria-label="activer le mode sombre" 
-                    class="rounded-xl border border-stone-200 bg-white px-3 py-2 text-lg hover:bg-stone-100
+                </div>
+            </a>
+
+
+            <nav aria-label="Options d affichage">
+                <button type="button" id="them-toggle" aria-label="activer le mode sombre" class="rounded-xl border border-stone-200 bg-white px-3 py-2 text-lg hover:bg-stone-100
                      dark:border-stone-600 dark:bg-stone-800 dark:hover:bg-stone-700">
                     Mode sombre 🌙
-                    </button>
-                </nav>
+                </button>
+            </nav>
 
-            </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="mx-auto max-w-6xl px-6 py-10">
+    <main class="mx-auto max-w-6xl px-6 py-10">
 
-            <section class="mb-8">
+        <section class="mb-8">
 
-                <p class="text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+            <p class="text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
                 Menu de la semaine</p>
-                <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-                    Une semaine équilibrée, sans dépasser le budget.</h1>
-                <span>Composez les menus du lundi au vendredi avec un plafond de 50 DH par jour et par apprenant.</span>
-            </section>
+            <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
+                Une semaine équilibrée, sans dépasser le budget.</h1>
+            <span>Composez les menus du lundi au vendredi avec un plafond de 50 DH par jour et par apprenant.</span>
+        </section>
 
-            <div class="jours/cout">
-                <section class="container-article grid lg:grid-cols-5 gap-4 sm:grid-cols-.2">
+        <div class="jours/cout">
+            <section class="container-article grid lg:grid-cols-5 gap-4 sm:grid-cols-.2">
                 <article id="reserve">
                     <h2 id="titre-reserve">Recettes en réserve <span id="compteur">0</span></h2>
                 </article>
-            
+
                 <article id="jours">
                     <h2 id="titre-jours">Jours prêts <span id="compteur">0</span></h2>
                 </article>
@@ -84,72 +84,62 @@
                     <h2 id="titre_equilibre">Équilibre alimentaire <span id="compteur">0</span></h2>
                 </article>
 
-            </div>
-            <div>
-                <select  class="border-gray-300 border w-full p-3 mt-4 mb-10 rounded-lg text-center shadow-lg text-slate-700 font-semibold">
-                    <option>Réserve de recette</option>
-                </select>
-            </div>
-            </section>
-            </div>
+        </div>
+        <div>
+            <select
+                class="border-gray-300 border w-full p-3 mt-4 mb-10 rounded-lg text-center shadow-lg text-slate-700 font-semibold">
+                <option>Réserve de recette</option>
+            </select>
+        </div>
+        </section>
+        </div>
 
         <div class="grid gap-6 lg:grid-cols-[380px_1fr]">
             <section id="reserve">
                 <div class="border-b-1 p-3 border-gray-300 ">
                     <div class="flex justify-between">
-                        <h2 class="font-bold text-xl">
-                        Réserve de recettes 
-                        <p class="text-sm text-gray-500">
-                        3 disponible
-                        </p>
-                    </h2> 
-                       <input type="submit" value="Ajouter" id="Ajouter" class="bg-green-600 h-8 w-20 rounded-md text-white  "> 
+                        <div>
+                            <h2 class="font-bold text-xl">
+                                Réserve de recettes</h2>
+                            <p class="text-sm text-gray-500">
+                                <span id="reserve-count">0</span>
+                                disponible
+                            </p>
+                        </div>
+                        <button type="button" id="Ajouter"
+                            class="h-8 rounded-md bg-emerald-700 px-4 text-white cursor-pointer">Ajouter</button>
                     </div>
 
-                    <div> 
-                        <input type="text" name="recherche" class="border border-gray-400 rounded w-full mt-2 p-2" id="recherche" placeholder=" Rechercher....">
+                    <div>
+                        <input type="text" name="recherche" class="border border-gray-400 rounded w-full mt-2 p-2"
+                            id="recherche" placeholder=" Rechercher....">
                     </div>
-                    <div id="filters"
-                    class="mt-4 flex flex-wrap gap-2"
-                    role="group"
-                    aria-label="Filter par categorie">
+                    <div id="filters" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter par categorie">
 
-                        <button type="button"
-                        data-filter="all"
-                        aria-pressed="true"
-                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        <button type="button" data-filter="all" aria-pressed="true" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
                         aria-pressed:bg-emerald-700
                         aria-pressed:text-white">
-                        Tout</button>
+                            Tout</button>
 
-                        <button type="button"
-                        data-filter="entree"
-                        aria-pressed="false"
-                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        <button type="button" data-filter="entree" aria-pressed="false" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
                         aria-pressed:bg-emerald-700
                         aria-pressed:text-white">
-                        Entrées</button>
+                            Entrées</button>
 
-                        <button type="button"
-                        data-filter="plat"
-                        aria-pressed="false"
-                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        <button type="button" data-filter="plat" aria-pressed="false" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
                         aria-pressed:bg-emerald-700
-                        aria-pressed:text-white">                      
-                        Plats</button>
-                        
-                        <button type="button"
-                        data-filter="dessert"
-                        aria-pressed="false"
-                        class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
+                        aria-pressed:text-white">
+                            Plats</button>
+
+                        <button type="button" data-filter="dessert" aria-pressed="false" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
                         aria-pressed:bg-emerald-700
-                        aria-pressed:text-white">                        
-                        Desserts</button>
-                    
+                        aria-pressed:text-white">
+                            Desserts</button>
+
                     </div>
 
-                <ul id="reserve-list" class="mt-4 space-y-3">
-                    <li data-category="entree" 
+                    <ul id="reserve-list" class="mt-4 space-y-3">
+                        <!-- <li data-category="entree" 
                     class="task rounded-2xl border border-stone-200 p-4 opacity-60">
                         <div class="flex items-start justify-between gap-2">
                         <p class="flex flex-wrap gap-2">
@@ -366,31 +356,25 @@
                     <h4 class="mt-2 text-lg font-bold">Pastilla</h4>
                     <p class="font-bold text-emerald-700">9 DH</p>
                     
-                </li>
- 
-                </ul>
+                </li> -->
+
+                    </ul>
             </section>
 
-<section id="planning" aria-labelledby="titre-planning">
-    <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
+            <section id="planning" aria-labelledby="titre-planning">
+                <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
                     <div>
-                        <h2 id="titre-planning" 
-                        class="text-2xl font-bold">
-                        Planning de la semaine</h2>
+                        <h2 id="titre-planning" class="text-2xl font-bold">
+                            Planning de la semaine</h2>
                         <p class="text-sm text-stone-500">
-                        3 créneaux par jour · 50 DH maximum</p>
+                            3 créneaux par jour · 50 DH maximum</p>
                     </div>
-    
-                    <p class="flex items-center gap-2 text-sm font-medium text-stone-600">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
-                        Mis à jour en temps réel
-                    </p>
-                </div> 
 
-                <div id="planning-list" 
-                class="grid gap-4 md:grid-cols-2">
-                
-    <article data-day="lundi" 
+                </div>
+
+                <div id="planning-list" class="grid gap-4 md:grid-cols-2">
+
+                    <!-- <article data-day="lundi" 
                     class="overflow-hidden rounded-2xl border border-emerald-300 bg-white text-stone-900 shadow-sm">
                         <header class="flex items-center justify-between gap-3 border-b border-emerald-200 bg-emerald-50 p-4">
                             <div class="flex items-center gap-3">
@@ -804,18 +788,151 @@
             </div>
         </footer>
     </article>
- 
+  -->
 
-</div>
-</section>
- 
+                </div>
+            </section>
+
 
             </section>
         </div>
-        </main>
-        <footer>
-            <p>&copy; 2026 Youcode</p>
-        </footer>
-        <script src="script.js"></script>
-    </body>
+
+        
+        <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+            <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
+
+                <h2 class="text-xl font-bold">Nouvelle recette</h2>
+                <p class="text-sm text-stone-500">Renseignez les informations du plat.</p>
+
+                <form id="recipe-form" novalidate class="space-y-5 p-6">
+
+
+                    <div>
+                        <label for="name" class="mb-1 block text-sm font-semibold">
+                            Nom du plat
+                            <span class="text-red-600" aria-hidden="true">*</span>
+                        </label>
+                        <div class="relative">
+                            <input type="text" id="input-recipt-name" name="name" placeholder="Ex. Tajine de poulet" aria-describedby="error-name" class="w-full rounded-xl border border-stone-300 px-3 py-3 pr-16 placeholder:text-stone-500 aria-invalid:border-red-500  aria-invalid:bg-red-50 focus:outline-2  focus:outline-offset-2  focus:outline-emerald-600">
+                            <span
+                                class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-stone-500">
+                                <span id="name-count">0</span>/30
+                            </span>
+                        </div>
+                        <p id="error-name" class="mt-1 hidden text-sm text-red-700"></p>
+
+                        <div>
+                            <label for="price" class="mb-1 block text-sm font-semibold">
+                                Prix (DH)
+                                <span class="text-red-600" aria-hidden="true">*</span>
+                            </label>
+                            <input type="text" id="input-recipt-price" name="price" required inputmode="decimal" autocomplete="off"
+                                placeholder="Ex. 25" aria-describedby="error-price" class="w-full rounded-xl border border-stone-300 px-3 py-3 placeholder:text-stone-500
+                                aria-invalid:border-red-500 
+                                aria-invalid:bg-red-50
+                                focus:outline-2 
+                                focus:outline-offset-2
+                                focus:outline-emerald-600">
+                            <p id="error-price" class="mt-1 hidden text-sm text-red-700"></p>
+                        </div>
+
+                        <div>
+                            <label for="category" class="mb-1 block text-sm font-semibold">
+                                Catégorie
+                                <span class="text-red-600" aria-hidden="true">*</span>
+                            </label>
+
+                            <select id="recipt-option-category" name="category" required aria-describedby="error-category" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
+                                    aria-invalid:border-red-500 aria-invalid:bg-red-50
+                                    focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
+                                <option value="" selected disabled>Sélectionner</option>
+                                <option value="entree">Entrée</option>
+                                <option value="plat">Plat principal</option>
+                                <option value="dessert">Dessert</option>
+                            </select>
+
+                            <p id="error-category" class="mt-1 hidden text-sm text-red-700"></p>
+                        </div>
+
+                        <div>
+                            <label for="category" class="mb-1 block text-sm font-semibold">
+                                Catégorie
+                                <span class="text-red-600" aria-hidden="true">*</span>
+                            </label>
+
+                            <select id="recipt-option-qalific" name="category" required aria-describedby="error-category" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
+                                    aria-invalid:border-red-500 aria-invalid:bg-red-50
+                                    focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
+                                <option value="">Sélectionner</option>
+                                <option value="entree">Bio</option>
+                                <option value="plat">Vertghhg</option>
+                                <option value="dessert">Classic</option>
+                            </select>
+
+                            <p id="error-category" class="mt-1 hidden text-sm text-red-700"></p>
+                        </div>
+
+                        <!-- <fieldset>
+                            <legend class="mb-2 text-sm font-semibold">Badge qualitatif</legend>
+                            <div class="grid grid-cols-3 gap-2">
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="badge" value="bio" class="peer sr-only">
+                                    <span
+                                        class="block rounded-xl border border-stone-300 px-3 py-3 text-center text-sm font-semibold text-stone-600
+                        peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-800
+                            peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-emerald-600">Bio</span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="badge" value="vegetarien" class="peer sr-only">
+                                    <span class="block rounded-xl border border-stone-300 px-3 py-3 text-center text-sm font-semibold text-stone-600
+                        peer-checked:border-emerald-600 
+                        peer-checked:bg-emerald-50
+                        peer-checked:text-emerald-800
+                        peer-focus-visible:outline-2 
+                        peer-focus-visible:outline-offset-2 peer-focus-visible:outline-emerald-600">Végétarien</span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="badge" value="classique" checked class="peer sr-only">
+                                    <span
+                                        class="block rounded-xl border border-stone-300 px-3 py-3 text-center text-sm font-semibold text-stone-600
+                    peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-800
+                                    peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-emerald-600">Classique</span>
+                                </label>
+
+                            </div>
+                        </fieldset> -->
+
+
+                        <div class="flex justify-end gap-3 border-t border-stone-200 pt-5">
+                            <button type="button" id="btn-recipt-cancel"
+                                class="rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-stone-100">
+                                Annuler
+                            </button>
+
+                            <button type="submit" id="btn-recipt-submit" class="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800
+                                disabled:cursor-not-allowed
+                                disabled:bg-stone-200
+                                disabled:text-stone-500 
+                                disabled:hover:bg-stone-200">
+                                ✓ Valider
+                            </button>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Youcode</p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
