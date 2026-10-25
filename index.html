@@ -110,10 +110,6 @@
                             class="h-8 rounded-md bg-emerald-700 px-4 text-white cursor-pointer">Ajouter</button>
                     </div>
 
-                    <div>
-                        <input type="text" name="recherche" class="border border-gray-400 rounded w-full mt-2 p-2"
-                            id="recherche" placeholder=" Rechercher....">
-                    </div>
                     <div id="filters" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter par categorie">
 
                         <button type="button" data-filter="all" aria-pressed="true" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
@@ -797,7 +793,7 @@
             </section>
         </div>
 
-        
+
         <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
             <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
 
@@ -813,21 +809,20 @@
                             <span class="text-red-600" aria-hidden="true">*</span>
                         </label>
                         <div class="relative">
-                            <input type="text" id="input-recipt-name" name="name" placeholder="Ex. Tajine de poulet" aria-describedby="error-name" class="w-full rounded-xl border border-stone-300 px-3 py-3 pr-16 placeholder:text-stone-500 aria-invalid:border-red-500  aria-invalid:bg-red-50 focus:outline-2  focus:outline-offset-2  focus:outline-emerald-600">
-                            <span
-                                class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-stone-500">
-                                <span id="name-count">0</span>/30
-                            </span>
+                            <input type="text" id="input-recipt-name" name="name" placeholder="Ex. Tajine de poulet"
+                                aria-describedby="error-name"
+                                class="w-full rounded-xl border border-stone-300 px-3 py-3 pr-16 placeholder:text-stone-500 aria-invalid:border-red-500  aria-invalid:bg-red-50 focus:outline-2  focus:outline-offset-2  focus:outline-emerald-600">
+
                         </div>
                         <p id="error-name" class="mt-1 hidden text-sm text-red-700"></p>
 
                         <div>
-                            <label for="price" class="mb-1 block text-sm font-semibold">
+                            <label for="price" type="number" class="mb-1 block text-sm font-semibold">
                                 Prix (DH)
                                 <span class="text-red-600" aria-hidden="true">*</span>
                             </label>
-                            <input type="text" id="input-recipt-price" name="price" required inputmode="decimal" autocomplete="off"
-                                placeholder="Ex. 25" aria-describedby="error-price" class="w-full rounded-xl border border-stone-300 px-3 py-3 placeholder:text-stone-500
+                            <input type="text" id="input-recipt-price" name="price" required inputmode="decimal"
+                                autocomplete="off" placeholder="Ex. 25" aria-describedby="error-price" class="w-full rounded-xl border border-stone-300 px-3 py-3 placeholder:text-stone-500
                                 aria-invalid:border-red-500 
                                 aria-invalid:bg-red-50
                                 focus:outline-2 
@@ -842,7 +837,8 @@
                                 <span class="text-red-600" aria-hidden="true">*</span>
                             </label>
 
-                            <select id="recipt-option-category" name="category" required aria-describedby="error-category" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
+                            <select id="recipt-option-category" name="category" required
+                                aria-describedby="error-category" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
                                     aria-invalid:border-red-500 aria-invalid:bg-red-50
                                     focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
                                 <option value="" selected disabled>Sélectionner</option>
@@ -855,55 +851,24 @@
                         </div>
 
                         <div>
-                            <label for="category" class="mb-1 block text-sm font-semibold">
-                                Catégorie
+                            <label for="Badge qualitatif" class="mb-1 block text-sm font-semibold">
+                                Badge qualitatif
                                 <span class="text-red-600" aria-hidden="true">*</span>
                             </label>
 
-                            <select id="recipt-option-qalific" name="category" required aria-describedby="error-category" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
+                            <select id="recipt-option-qalific" name="category" required aria-describedby="error-Badge"
+                                class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
                                     aria-invalid:border-red-500 aria-invalid:bg-red-50
                                     focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
-                                <option value="">Sélectionner</option>
-                                <option value="entree">Bio</option>
-                                <option value="plat">Vertghhg</option>
-                                <option value="dessert">Classic</option>
+                                <option value="" selected disabled>Sélectionner</option>
+                                <option value="bio">Bio</option>
+                                <option value="vegetarien">Végétarien</option>
+                                <option value="classique">Classique</option>
                             </select>
 
-                            <p id="error-category" class="mt-1 hidden text-sm text-red-700"></p>
+                            <p id="error-Badge" class="mt-1 hidden text-sm text-red-700"></p>
                         </div>
 
-                        <!-- <fieldset>
-                            <legend class="mb-2 text-sm font-semibold">Badge qualitatif</legend>
-                            <div class="grid grid-cols-3 gap-2">
-
-                                <label class="cursor-pointer">
-                                    <input type="radio" name="badge" value="bio" class="peer sr-only">
-                                    <span
-                                        class="block rounded-xl border border-stone-300 px-3 py-3 text-center text-sm font-semibold text-stone-600
-                        peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-800
-                            peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-emerald-600">Bio</span>
-                                </label>
-
-                                <label class="cursor-pointer">
-                                    <input type="radio" name="badge" value="vegetarien" class="peer sr-only">
-                                    <span class="block rounded-xl border border-stone-300 px-3 py-3 text-center text-sm font-semibold text-stone-600
-                        peer-checked:border-emerald-600 
-                        peer-checked:bg-emerald-50
-                        peer-checked:text-emerald-800
-                        peer-focus-visible:outline-2 
-                        peer-focus-visible:outline-offset-2 peer-focus-visible:outline-emerald-600">Végétarien</span>
-                                </label>
-
-                                <label class="cursor-pointer">
-                                    <input type="radio" name="badge" value="classique" checked class="peer sr-only">
-                                    <span
-                                        class="block rounded-xl border border-stone-300 px-3 py-3 text-center text-sm font-semibold text-stone-600
-                    peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-800
-                                    peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-emerald-600">Classique</span>
-                                </label>
-
-                            </div>
-                        </fieldset> -->
 
 
                         <div class="flex justify-end gap-3 border-t border-stone-200 pt-5">
@@ -935,4 +900,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
