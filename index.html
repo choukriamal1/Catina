@@ -41,13 +41,6 @@
             </a>
 
 
-            <nav aria-label="Options d affichage">
-                <button type="button" id="them-toggle" aria-label="activer le mode sombre" class="rounded-xl border border-stone-200 bg-white px-3 py-2 text-lg hover:bg-stone-100
-                     dark:border-stone-600 dark:bg-stone-800 dark:hover:bg-stone-700">
-                    Mode sombre 🌙
-                </button>
-            </nav>
-
         </div>
     </header>
 
@@ -85,16 +78,10 @@
                 </article>
 
         </div>
-        <div>
-            <select
-                class="border-gray-300 border w-full p-3 mt-4 mb-10 rounded-lg text-center shadow-lg text-slate-700 font-semibold">
-                <option>Réserve de recette</option>
-            </select>
-        </div>
         </section>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-[380px_1fr]">
+        <div class="grid gap-10 py-10 lg:grid-cols-[380px_1fr]">
             <section id="reserve">
                 <div class="border-b-1 p-3 border-gray-300 ">
                     <div class="flex justify-between">
@@ -110,7 +97,7 @@
                             class="h-8 rounded-md bg-emerald-700 px-4 text-white cursor-pointer">Ajouter</button>
                     </div>
 
-                    <div id="filters" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter par categorie">
+                     <div id="filters" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter par categorie">
 
                         <button type="button" data-filter="all" aria-pressed="true" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
                         aria-pressed:bg-emerald-700
@@ -132,227 +119,11 @@
                         aria-pressed:text-white">
                             Desserts</button>
 
-                    </div>
-
+                    </div> 
+                    <div class="recepies_list"></div>
                     <ul id="reserve-list" class="mt-4 space-y-3">
-                        <!-- <li data-category="entree" 
-                    class="task rounded-2xl border border-stone-200 p-4 opacity-60">
-                        <div class="flex items-start justify-between gap-2">
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
-                            Entrée</span>
-                            <span class="rounded-full bg-lime-100 px-2 py-0.5 text-xs font-semibold text-lime-800">
-                            Bio</span>
-                        </p>
-                        <p>
-                            <button type="button" 
-                            aria-label="Modifier Velouté de legumes" 
-                            disabled class="px-1 disabled:cursor-not-allowed">
-                            ✏️</button>
-                            <button type="button" 
-                            aria-label="Supprimer Velouté de légumes" 
-                            class="px-1">
-                            🗑️</button>
-                        </p>
-                        </div>
-
-                        <h4 class="mt-2 text-lg font-bold">Velouté de légumes</h4>
-                        <p class="font-bold text-emerald-700">5 DH</p>
-                        <p class="mt-2 rounded-lg border border-stone-200 px-2 text-sm text-stone-600">
-                        ✓ [Assigné : Lundi - Entrée]</p>
-                    </li>
-
-                <li data-category="entree" 
-                    class="tesk rounded-2xl border border-stone-200 p-4 opacity-60">
-                    <div class="flex items-start justify-between gap-2">
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
-                            Entrée</span>
-                            <span class="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-800">
-                            Végétarien</span>
-                        </p>
-                        <p class="flex gap-1">
-                            <button type="button" 
-                            aria-label="Modifier Salade marocaine" 
-                            disabled class="px-1 disabled:cursor-not-allowed">✏️</button>
-                            <button type="button" 
-                            aria-label="Supprimer Salade marocaine" 
-                            class="px-1">
-                            🗑️</button>
-                        </p>
-                   </div>
-
-                    <h4 class="mt-2 text-lg font-bold">
-                    Salade marocaine</h4>
-                    <p class="font-bold text-emerald-700">7 DH</p>
-                    <p class="mt-2 rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-600">
-                    ✓ [Assigné : Mardi - Entrée]</p>
-                </li>
-
-                <li ata-category="entree" 
-                class="task rounded-2xl border border-stone-200 p-4">
-                    <div class="flex items-start justify-between gap-2">
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
-                            Entrée</span>
-                            <span class="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-800">
-                            Végétarien</span>
-                        </p>
-                        <p class="flex gap-1">
-                            <button type="button" 
-                            aria-label="Modifier Briouates au fromage" 
-                            class="px-1">
-                            ✏️</button>
-                            <button type="button" 
-                            aria-label="Supprimer Briouates au fromage" 
-                            class="px-1">
-                            🗑️</button>
-                        </p>
-                   </div>
-            
-                   <h4 class="mt-2 text-lg font-bold">
-                    Briouates au fromage</h4>
-                    <p class="font-bold text-emerald-700">
-                    8 DH</p>
-                </li>
-
-                <li data-category="plat" 
-                class="task rounded-2xl border border-stone-200 p-4 opacity-60">
-                    <div class="flex items-start justify-between gap-2">
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-orange-800">
-                            Plat principal</span>
-                            <span class="rounded-full bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-700">
-                            Classique</span>
-                        </p>
-                        <p class="flex gap-1">
-                            <button type="button" 
-                            aria-label="Modifier Tajine de poulet" 
-                            disabled class="px-1 disabled:cursor-not-allowed">
-                            ✏️</button>
-                            <button type="button" 
-                            aria-label="Supprimer Tajine de poulet" 
-                            class="px-1">🗑️</button>
-                        </p>
-                    </div>
                         
-                    <h4 class="mt-2 text-lg font-bold">Tajine de poulet</h4>
-                    <p class="font-bold text-emerald-700">25 DH</p>
-                    <p class="mt-2 rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-600">
-                    ✓ [Assigné : Lundi - Plat]</p>
-                </li>
-
-                <li data-category="plat" 
-                class="task rounded-2xl border border-stone-200 p-4 opacity-60">
-                   <div class="flex items-start justify-between gap-2">
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-orange-800">
-                            PLAT PRINCIPAL
-                            </span>
-                            <span class="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-800">
-                            Végétarien
-                            </span>
-                        </p>
-                        <p class="flex gap-1">
-                            <button type="button" 
-                            aria-label="Modifier Couscous aux légumes" 
-                            disabled class="px-1 disabled:cursor-not-allowed">
-                            ✏️
-                            </button>
-                            <button type="button" 
-                            aria-label="Supprimer Couscous aux légumes" 
-                            class="px-1">
-                            🗑️</button>
-                        </p>
-                    </div>
-                    <h4 class="mt-2 text-lg font-bold">Couscous aux légumes</h4>
-                    <p class="font-bold text-emerald-700">28 DH</p>
-                    <p class="mt-2 rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-600"> 
-                    ✓ [Assigné : Mardi - Plat]</p>
-                </li>
-
-                
-                <li data-category="plat"
-                class="task rounded-2xl border border-stone-200 p-4">
-                    <div class="flex items-start justify-between gap-2"> 
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-orange-800">
-                            PLAT PRINCIPAL
-                            </span>
-                            <span class="rounded-full bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-700">
-                            Classique</span>
-                        </p>
-                        <p class="flex gap-1">
-                            <button type="button" 
-                            aria-label="Modifier Kefta aux œufs" 
-                            class="px-1">
-                            ✏️</button>
-                            <button type="button" 
-                            aria-label="Supprimer Kefta aux œufs" 
-                            class="px-1">
-                            🗑️</button>
-                        </p>
-                    </div>
                     
-                    <h4 class="mt-2 text-lg font-bold">Kefta aux œufs</h4>
-                    <p class="font-bold text-emerald-700">24 DH</p>
-                       
-                </li>
-
-                <li data-category="dessert" 
-                class="task rounded-2xl border border-stone-200 p-4 opacity-60">
-                    <div class="flex items-start justify-between gap-2">
-                        
-                        <p class="flex flex-wrap gap-2">
-                            <span class="rounded-full bg-pink-100 px-2 py-0.5 text-xs font-bold text-pink-800">
-                            Desert</span>
-                            <span class="rounded-full bg-lime-100 px-2 py-0.5 text-xs font-semibold text-lime-800">
-                            Bio</span>
-                        </p>
-                        <p class="flex gap-1">
-                            <button type="button" 
-                            aria-label="Modifier Fruits de saison" 
-                            disabled class="px-1 disabled:cursor-not-allowed">
-                            ✏️</button>
-                            <button type="button" 
-                            aria-label="Supprimer Fruits de saison" 
-                            class="px-1">
-                            🗑️</button>
-                        </p>
-                    
-                    </div>
-                        <h4 class="mt-2 text-lg font-bold">
-                        Fruits de saison</h4>
-                        <p class="font-bold text-emerald-700">10 DH</p>
-                        <p class="mt-2 rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-600">
-                        ✓ [Assigné : Lundi - Dessert]</p>   
-                </li>
-
-                 <li data-category="dessert" 
-                 class="task rounded-2xl border border-stone-200 p-4">
-                    <div class="flex items-start justify-between gap-2">
-                    <p class="flex flex-wrap gap-2">
-                    <span class="rounded-full bg-pink-100 px-2 py-0.5 text-xs font-bold text-pink-800">
-                    Dessert</span>
-                    <span class="rounded-full bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-700">
-                    Classique</span>
-                    </p>
-
-                    <p class="flex gap-1">
-                    <button type="button" 
-                    aria-label="Modifier Pastilla au lait" 
-                    class="px-1">✏️</button>
-                    <button type="button" 
-                    aria-label="Supprimer Pastilla au lait" 
-                    class="px-1">🗑️</button>
-                    </p>
-                    
-                   </div>
-                    <div>
-                    <h4 class="mt-2 text-lg font-bold">Pastilla</h4>
-                    <p class="font-bold text-emerald-700">9 DH</p>
-                    
-                </li> -->
 
                     </ul>
             </section>
@@ -370,7 +141,8 @@
 
                 <div id="planning-list" class="grid gap-4 md:grid-cols-2">
 
-                    <!-- <article data-day="lundi" 
+                    <!-- lundi -->
+                    <article data-day="lundi" 
                     class="overflow-hidden rounded-2xl border border-emerald-300 bg-white text-stone-900 shadow-sm">
                         <header class="flex items-center justify-between gap-3 border-b border-emerald-200 bg-emerald-50 p-4">
                             <div class="flex items-center gap-3">
@@ -381,14 +153,14 @@
                                 <div>
                                     <h3 class="font-bold leading-tight">Lundi</h3>
                                     <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">
-                                     Menu complet</p>
+                                    Jour vide</p>
                                 </div>
                 
                             </div>
                             <button type="button" 
                             data-action="clear-day" 
-                            class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-500 hover:bg-white hover:text-stone-900">
-                             X</button>
+                            disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-500 hover:bg-white hover:text-stone-900">
+                            X</button>
                         </header>
 
                         <div class="space-y-3 p-4">
@@ -400,8 +172,6 @@
                                     </span>
                                     ENTRÉE
                                 </span>
-                                <span class="text-xs font-bold text-stone-600">
-                                5 DH</span>
                             </div>
                             
                             <label for="lundi-entree" 
@@ -411,7 +181,6 @@
                             data-slot="entree" 
                             class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
                                 <option value="">En réserve</option>
-                                <option selected>Velouté de légumes · 5 DH</option>
                             </select>
                         </div>
 
@@ -422,7 +191,6 @@
                                     <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true">
                                     </span>PLAT PRINCIPAL
                                 </span>
-                                <span class="text-xs font-bold text-stone-600">25 DH</span>
                             </div>
                         
                             <label for="lundi-plat" 
@@ -431,7 +199,6 @@
                             data-slot="plat" 
                             class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
                                 <option value="">En réserve</option>
-                                <option selected>Tajine de poulet · 25 DH</option>
                             </select>
                     
                         </div>
@@ -446,8 +213,7 @@
                                     aria-hidden="true">
                                     </span>DESSERT
                                 </span>
-                                <span class="text-xs font-bold text-stone-600">
-                                 10 DH</span>
+                            
                             </div>
                        
                             <label for="lundi-dessert" 
@@ -457,8 +223,8 @@
                             data-slot="dessert" 
                             class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
                                 <option value="">En réserve</option>
-                                <option selected>Fruits de saison · 10 DH</option>
                            </select>
+                        </div>
                         </div>
            
  
@@ -469,7 +235,7 @@
                             <span class="font-medium text-stone-600">
                             Total du jour</span>
                             <span>
-                                <strong class="day-total">40 DH</strong> 
+                                <strong class="day-total">0 DH</strong> 
                                 <span class="text-stone-400">/ 50 DH max</span>
                             </span>
                         </p>
@@ -479,13 +245,13 @@
                         aria-label="Budget du lundi" 
                         aria-valuemin="0" 
                         aria-valuemax="50" 
-                        aria-valuenow="40">
-                            <div class="h-1.5 rounded-full bg-emerald-500" style="width: 80%"></div>
+                        aria-valuenow="0">
+                            <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
                         </div>
                     </footer>
     </article>
  
-    
+    <!-- mardi -->
     <article data-day="mardi" 
         class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
  
@@ -495,13 +261,13 @@
                     aria-hidden="true">Ma</span>
                     <div>
                         <h3 class="font-bold leading-tight">Mardi</h3>
-                        <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">2/3 créneaux</p>
+                        <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">Jour vide</p>
                     </div>
                 </div>
                 <button type="button" 
                 data-action="clear-day" 
                 class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-500 hover:bg-stone-100 hover:text-stone-900">
-                Vider</button>
+                X</button>
            </header>
  
            <div class="space-y-3 p-4">
@@ -509,14 +275,13 @@
                 <div class="rounded-xl bg-stone-50 p-3">
                     <div class="mb-2 flex items-center justify-between">
                         <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                            <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>ENTRÉE
+                            <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+                            ENTRÉE
                         </span>
-                        <span class="text-xs font-bold text-stone-600">7 DH</span>
                     </div>
                     <label for="mardi-entree" class="sr-only">Entrée du mardi</label>
                     <select id="mardi-entree" data-slot="entree" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
                         <option value="">En réserve</option>
-                        <option selected>Salade marocaine · 7 DH</option>
                     </select>
                 </div>
  
@@ -526,14 +291,12 @@
                             <span class="h-2 w-2 rounded-full bg-orange-500" 
                             aria-hidden="true"></span>PLAT PRINCIPAL
                         </span>
-                        <span class="text-xs font-bold text-stone-600">28 DH</span>
                     </div>
                     <label for="mardi-plat" class="sr-only">Plat principal du mardi</label>
                     <select id="mardi-plat" 
                     data-slot="plat" 
                     class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
                         <option value="">En réserve</option>
-                        <option selected>Couscous aux légumes · 28 DH</option>
                     </select>
                 </div>
  
@@ -555,23 +318,21 @@
             <footer class="border-t border-stone-200 px-4 py-3">
                 <p class="flex items-center justify-between text-sm">
                     <span class="font-medium text-stone-600">Total du jour</span>
-                        <span>
-                            <strong class="day-total">35 DH</strong> 
-                            <span class="text-stone-400">/ 50 DH max</span>
-                        </span>
+                        <span><strong class="day-total">0 DH</strong> 
+                        <span class="text-stone-400">/ 50 DH max</span></span>
                 </p>
                 <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" 
                 role="progressbar" 
                 aria-label="Budget du mardi" 
                 aria-valuemin="0" 
                 aria-valuemax="50" 
-                aria-valuenow="35">
-                    <div class="h-1.5 rounded-full bg-emerald-500" style="width: 70%"></div>
+                aria-valuenow="0">
+                    <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
                 </div>
             </footer>
     </article>
  
-    
+    <!-- mercredi -->
     <article data-day="mercredi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
  
         <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
@@ -652,7 +413,8 @@
                     <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">Jour vide</p>
                 </div>
             </div>
-            <button type="button" data-action="clear-day" disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-300 disabled:cursor-not-allowed">Vider</button>
+            <button type="button" data-action="clear-day" disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-300 disabled:cursor-not-allowed">
+                X</button>
        </header>
  
        <div class="space-y-3 p-4">
@@ -725,7 +487,7 @@
                 </div>
             </div>
             <button type="button" data-action="clear-day" disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-300 disabled:cursor-not-allowed">
-            Vider</button>
+            X</button>
         </header>
  
         <div class="space-y-3 p-4">
@@ -780,11 +542,11 @@
             </p>
             
             <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar" aria-label="Budget du Vendredi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
-                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 50%"></div>
+                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
             </div>
         </footer>
     </article>
-  -->
+  
 
                 </div>
             </section>
@@ -794,8 +556,7 @@
         </div>
 
 
-        <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
-            <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
+<div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">            <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
 
                 <h2 class="text-xl font-bold">Nouvelle recette</h2>
                 <p class="text-sm text-stone-500">Renseignez les informations du plat.</p>
