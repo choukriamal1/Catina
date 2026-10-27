@@ -2,635 +2,526 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CANTINE YOUCODE</title>
-    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="stylesheet" href="style3.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <style type="text/tailwindcss">
-        @custom-variant dark (&:where(.dark, .dark *));
-         .card {
-         @apply flex items-start gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm
-            dark:border-stone-700 dark:bg-stone-800;
-         }
-        </style>
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantine YouCode</title>
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+  <link rel="stylesheet" href="style3.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-100">
+<body class="bg-stone-50 text-stone-900">
 
-
-    <header class="border-b border-stone-200 bg-white 
-        dark:boder-stone-700 dark:bg-stone-800">
-        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-
-            <a href="/" class="flex items-center gap-3">
-                <img src="icons/logo.svg" alt="Logo Cantine Youcode" class="h-12 w-12">
-                <div>
-                    <p class="text-x1 font-bold leading-tight">
-                        Cantine YouCode</p>
-                    <p class="text-sm text-stone-500 
-                         dark:text-stone-400">
-                        Planificateur de menus</p>
-                </div>
-            </a>
-
-
+  <!--Header introduction-->
+  <header class="border-b border-stone-200 bg-white">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+      <a href="/" class="flex items-center gap-3">
+        <img src="icons/logo.svg" alt="Logo Cantine YouCode" class="h-12 w-12">
+        <div>
+          <p class="text-xl font-bold leading-tight">Cantine YouCode</p>
+          <p class="text-sm text-stone-600">Planificateur de menus</p>
         </div>
-    </header>
+      </a>
+    </div>
+  </header>
 
-    <main class="mx-auto max-w-6xl px-6 py-10">
+  <main class="mx-auto max-w-6xl px-6 py-10">
 
-        <section class="mb-8">
+    <!--TITRE-->
+    <section class="mb-8">
+      <p class="text-sm font-semibold uppercase tracking-widest text-emerald-700">Menu de la semaine</p>
+      <h1 class="mt-2 py-10 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
+        Une semaine équilibrée, sans dépasser le budget.
+      </h1>
+      <p>Composez les menus du lundi au vendredi avec un plafond de 50 DH par jour et par apprenant.</p>
+    </section>
 
-            <p class="text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
-                Menu de la semaine</p>
-            <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl lg:text-5xl py-10">
-                Une semaine équilibrée, sans dépasser le budget.</h1>
-            <span>Composez les menus du lundi au vendredi avec un plafond de 50 DH par jour et par apprenant.</span>
-        </section>
+    <!--Statistiques-->
+    <section class="container-article flex flex-row flex-wrap items-center justify-center gap-5" aria-label="Indicateurs de la semaine">
+      <article class="w-55 h-18">
+        <h2>Recettes en réserve <span id="compteur-reserve">0</span></h2>
+      </article>
 
-        <div class="jours/cout">
-            <section class="container-article flex flex-row justify-center items-center gap-5 flex-wrap">
-                <article id="reserve" class="w-55 h-18">
-                    <h2 id="titre-reserve">Recettes en réserve <span id="compteur">0</span></h2>
-                </article>
+      <article class="w-55 h-18">
+        <h2>Jours prêts <span id="compteur-jours">0/5</span></h2>
+      </article>
 
-                <article id="jours" class="w-55 h-18">
-                    <h2 id="titre-jours" > Jours prêts <span id="compteur">0</span></h2>
-                </article>
+      <article class="w-55 h-18">
+        <h2>Coût de la semaine <span id="compteur-semaine">0 DH</span></h2>
+      </article>
 
-                <article id="semaine" class="w-55 h-18">
-                    <h2 id="cout_semaine">Coût de la semaine <span id="compteur">0</span></h2>
-                </article>
+      <article class="w-55 h-18">
+        <h2>Équilibre alimentaire <span id="compteur-equilibre">Non équilibré</span></h2>
+      </article>
+    </section>
 
-                <article id="equilibre" class="w-55 h-18">
-                    <h2 id="titre_equilibre">Équilibre alimentaire <span id="compteur">0</span></h2>
-                </article>
-            </section>
+    <!--Reserve + plannig-->
+    <div class="grid gap-10 py-10 lg:grid-cols-[380px_1fr]">
+
+      <!--Réserve de recette-->
+      <section id="reserve" aria-labelledby="titre-reserve">
+        <div class="border-b border-gray-300 p-3">
+          <div class="flex justify-between">
+            <div>
+              <h2 id="titre-reserve" class="text-xl font-bold">Réserve de recettes</h2>
+              <p class="text-sm text-gray-600"><span id="reserve-count">0</span> disponible(s)</p>
+            </div>
+            <button type="button" id="btn-add"
+                    class="h-8 cursor-pointer rounded-md bg-emerald-700 px-4 text-white hover:bg-emerald-800">
+              Ajouter
+            </button>
+          </div>
+
+          <div id="filters" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filtrer par catégorie">
+        <button type="button" data-filter="all" aria-pressed="true"
+                class="rounded-xl bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700 aria-pressed:bg-emerald-700 aria-pressed:text-white">
+          Tout
+        </button>
+        <button type="button" data-filter="entree" aria-pressed="false"
+                class="rounded-xl bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700 aria-pressed:bg-emerald-700 aria-pressed:text-white">
+          Entrées
+        </button>
+        <button type="button" data-filter="plat" aria-pressed="false"
+                class="rounded-xl bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700 aria-pressed:bg-emerald-700 aria-pressed:text-white">
+          Plats
+        </button>
+        <button type="button" data-filter="dessert" aria-pressed="false"
+                class="rounded-xl bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700 aria-pressed:bg-emerald-700 aria-pressed:text-white">
+          Desserts
+        </button>
+          </div>
         </div>
 
-        <div class="grid gap-10 py-10 lg:grid-cols-[380px_1fr] ">
-            <section id="reserve">
-                <div class="border-b-1 p-3 border-gray-300 ">
-                    <div class="flex justify-between">
-                        <div>
-                            <h2 class="font-bold text-xl">
-                                Réserve de recettes</h2>
-                            <p class="text-sm text-gray-500">
-                                <span id="reserve-count">0</span>
-                                disponible
-                            </p>
-                        </div>
-                        <button type="button" id="Ajouter"
-                            class="h-8 rounded-md bg-emerald-700 px-4 text-white cursor-pointer">Ajouter</button>
-                    </div>
+        <!-- Les cartes sont créées par le JavaScript -->
+        <ul id="reserve-list" class="mt-4 space-y-3"></ul>
+      </section>
 
-                     <div id="filters" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter par categorie">
+      <!-- Planning de la semaine -->
+      <section id="planning" aria-labelledby="titre-planning">
+        <div class="mb-4">
+          <h2 id="titre-planning" class="text-2xl font-bold">Planning de la semaine</h2>
+          <p class="text-sm text-stone-600">3 créneaux par jour · 50 DH maximum</p>
+        </div>
 
-                        <button type="button" data-filter="all" aria-pressed="true" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
-                        aria-pressed:bg-emerald-700
-                        aria-pressed:text-white">
-                            Tout</button>
+        <div id="planning-list" class="grid gap-4 md:grid-cols-2">
 
-                        <button type="button" data-filter="entree" aria-pressed="false" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
-                        aria-pressed:bg-emerald-700
-                        aria-pressed:text-white">
-                            Entrées</button>
+          <!-- LUNDI-->
+          <article data-day="lundi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
 
-                        <button type="button" data-filter="plat" aria-pressed="false" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
-                        aria-pressed:bg-emerald-700
-                        aria-pressed:text-white">
-                            Plats</button>
-
-                        <button type="button" data-filter="dessert" aria-pressed="false" class=" px-4 py-2 rounded-xl bg-stone-100 text-sm font-semibold text-stone-700
-                        aria-pressed:bg-emerald-700
-                        aria-pressed:text-white">
-                            Desserts</button>
-
-                    </div> 
-                    <div class="recepies_list"></div>
-                    <ul id="reserve-list" class="mt-4 space-y-3">
-                        
-                    
-
-                    </ul>
-            </section>
-
-            <section id="planning" aria-labelledby="titre-planning">
-                <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
-                    <div>
-                        <h2 id="titre-planning" class="text-2xl font-bold">
-                            Planning de la semaine</h2>
-                        <p class="text-sm text-stone-500">
-                            3 créneaux par jour · 50 DH maximum</p>
-                    </div>
-
-                </div>
-
-                <div id="planning-list" class="grid gap-4 md:grid-cols-2">
-
-                    <!-- lundi -->
-                    <article data-day="lundi" 
-                    class="overflow-hidden rounded-2xl   bg-white  shadow-sm">
-                        <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
-                            <div class="flex items-center gap-3">
-
-                               <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" 
-                                    aria-hidden="true">                                Lu</span>
-                                
-                                <div>
-                                    <h3 class="font-bold leading-tight">Lundi</h3>
-                                </div>
-                
-                            </div>
-                            
-                        </header>
-
-                        <div class="space-y-3 p-4">
-
-                        <div class="rounded-xl bg-stone-50 p-3">
-                            <div class="mb-2 flex items-center justify-between">
-                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                                    <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true">
-                                    </span>
-                                    ENTRÉE
-                                </span>
-                            </div>
-                            
-                            <label for="lundi-entree" 
-                            class="sr-only">
-                            Entrée du lundi</label>
-                            <select id="lundi-entree" 
-                            data-slot="entree" 
-                            class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                                <option value="">En réserve</option>
-                            </select>
-                        </div>
-
-                        <div class="rounded-xl bg-stone-50 p-3">
-                            
-                            <div class="mb-2 flex items-center justify-between">
-                                <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
-                                    <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true">
-                                    </span>PLAT PRINCIPAL
-                                </span>
-                            </div>
-                        
-                            <label for="lundi-plat" 
-                            class="sr-only">Plat principal du lundi</label>
-                            <select id="lundi-plat" 
-                            data-slot="plat" 
-                            class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                                <option value="">En réserve</option>
-                            </select>
-                    
-                        </div>
-
-
-
-                        
-                        <div class="rounded-xl bg-stone-50 p-3">
-                            <div class="mb-2 flex items-center justify-between">
-                                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
-                                    <span class="h-2 w-2 rounded-full bg-violet-500" 
-                                    aria-hidden="true">
-                                    </span>DESSERT
-                                </span>
-                            
-                            </div>
-                       
-                            <label for="lundi-dessert" 
-                            class="sr-only">Dessert du lundi</label>
-                       
-                            <select id="lundi-dessert" 
-                            data-slot="dessert" 
-                            class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                                <option value="">En réserve</option>
-                           </select>
-                        </div>
-                        </div>
-           
- 
-      
- 
-                   <footer class="border-t border-stone-200 px-4 py-3">
-                       <p class="flex items-center justify-between text-sm">
-                            <span class="font-medium text-stone-600">
-                            Total du jour</span>
-                            <span>
-                                <strong class="day-total">0 DH</strong> 
-                                <span class="text-stone-400">/ 50 DH max</span>
-                            </span>
-                        </p>
-        
-                        <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" 
-                        role="progressbar" 
-                        aria-label="Budget du lundi" 
-                        aria-valuemin="0" 
-                        aria-valuemax="50" 
-                        aria-valuenow="0">
-                            <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
-                        </div>
-                    </footer>
-    </article>
- 
-    <!-- mardi -->
-    <article data-day="mardi" 
-        class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
- 
             <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
-                <div class="flex items-center gap-3">
-                    <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" 
-                    aria-hidden="true">Ma</span>
-                    <div>
-                        <h3 class="font-bold leading-tight">Mardi</h3>
-                    </div>
-                </div>
-           </header>
- 
-           <div class="space-y-3 p-4">
- 
-                <div class="rounded-xl bg-stone-50 p-3">
-                    <div class="mb-2 flex items-center justify-between">
-                        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                            <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
-                            ENTRÉE
-                        </span>
-                    </div>
-                    <label for="mardi-entree" class="sr-only">Entrée du mardi</label>
-                    <select id="mardi-entree" data-slot="entree" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                        <option value="">En réserve</option>
-                    </select>
-                </div>
- 
-                <div class="rounded-xl bg-stone-50 p-3">
-                    <div class="mb-2 flex items-center justify-between">
-                        <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
-                            <span class="h-2 w-2 rounded-full bg-orange-500" 
-                            aria-hidden="true"></span>PLAT PRINCIPAL
-                        </span>
-                    </div>
-                    <label for="mardi-plat" class="sr-only">Plat principal du mardi</label>
-                    <select id="mardi-plat" 
-                    data-slot="plat" 
-                    class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                        <option value="">En réserve</option>
-                    </select>
-                </div>
- 
-                <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                    <div class="mb-2">
-                        <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
-                            <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>DESSERT
-                        </span>
-                    </div>
-                    <label for="mardi-dessert" class="sr-only">Dessert du mardi</label>
-                    <select id="mardi-dessert" 
-                    data-slot="dessert" 
-                    class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                        <option value="">En réserve</option>
-                    </select>
-                </div>
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Lu</span>
+                <h3 class="font-bold leading-tight">Lundi</h3>
+              </div>
+              <button type="button" data-action="clear-day" disabled
+                      class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-700 hover:bg-stone-100 disabled:cursor-not-allowed disabled:text-stone-400 disabled:hover:bg-transparent">
+                X
+              </button>
+            </header>
+
+            <div class="space-y-3 p-4">
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>ENTRÉE
+                </span>
+              </div>
+              <label for="lundi-entree" class="sr-only">Entrée du lundi</label>
+              <select id="lundi-entree" data-slot="entree"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
             </div>
- 
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
+                  <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true"></span>PLAT PRINCIPAL
+                </span>
+              </div>
+              <label for="lundi-plat" class="sr-only">Plat principal du lundi</label>
+              <select id="lundi-plat" data-slot="plat"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
+                  <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>DESSERT
+                </span>
+              </div>
+              <label for="lundi-dessert" class="sr-only">Dessert du lundi</label>
+              <select id="lundi-dessert" data-slot="dessert"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            </div>
+
             <footer class="border-t border-stone-200 px-4 py-3">
-                <p class="flex items-center justify-between text-sm">
-                    <span class="font-medium text-stone-600">Total du jour</span>
-                        <span><strong class="day-total">0 DH</strong> 
-                        <span class="text-stone-400">/ 50 DH max</span></span>
-                </p>
-                <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" 
-                role="progressbar" 
-                aria-label="Budget du mardi" 
-                aria-valuemin="0" 
-                aria-valuemax="50" 
-                aria-valuenow="0">
-                    <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
-                </div>
+              <p class="flex items-center justify-between text-sm">
+                <span class="font-medium text-stone-700">Total du jour</span>
+                <span><strong class="day-total">0 DH</strong> <span class="text-stone-600">/ 50 DH max</span></span>
+              </p>
+              <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar"
+                   aria-label="Budget du lundi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
+              </div>
             </footer>
-    </article>
- 
-    <!-- mercredi -->
-    <article data-day="mercredi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
- 
-        <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
-            <div class="flex items-center gap-3">
+          </article>
+
+          <!--MARDI-->
+          <article data-day="mardi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
+
+            <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Ma</span>
+                <h3 class="font-bold leading-tight">Mardi</h3>
+              </div>
+              <button type="button" data-action="clear-day" disabled
+                      class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-700 hover:bg-stone-100 disabled:cursor-not-allowed disabled:text-stone-400 disabled:hover:bg-transparent">
+                X
+              </button>
+            </header>
+
+            <div class="space-y-3 p-4">
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>ENTRÉE
+                </span>
+              </div>
+              <label for="mardi-entree" class="sr-only">Entrée du mardi</label>
+              <select id="mardi-entree" data-slot="entree"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
+                  <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true"></span>PLAT PRINCIPAL
+                </span>
+              </div>
+              <label for="mardi-plat" class="sr-only">Plat principal du mardi</label>
+              <select id="mardi-plat" data-slot="plat"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
+                  <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>DESSERT
+                </span>
+              </div>
+              <label for="mardi-dessert" class="sr-only">Dessert du mardi</label>
+              <select id="mardi-dessert" data-slot="dessert"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            </div>
+
+            <footer class="border-t border-stone-200 px-4 py-3">
+              <p class="flex items-center justify-between text-sm">
+                <span class="font-medium text-stone-700">Total du jour</span>
+                <span><strong class="day-total">0 DH</strong> <span class="text-stone-600">/ 50 DH max</span></span>
+              </p>
+              <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar"
+                   aria-label="Budget du mardi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
+              </div>
+            </footer>
+          </article>
+
+          <!--MERCREDI-->
+          <article data-day="mercredi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
+
+            <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
+              <div class="flex items-center gap-3">
                 <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Me</span>
-                <div>
-                    <h3 class="font-bold leading-tight">Mercredi</h3>
-                </div>
-            </div>
-      </header>
- 
-      <div class="space-y-3 p-4">
+                <h3 class="font-bold leading-tight">Mercredi</h3>
+              </div>
+              <button type="button" data-action="clear-day" disabled
+                      class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-700 hover:bg-stone-100 disabled:cursor-not-allowed disabled:text-stone-400 disabled:hover:bg-transparent">
+                X
+              </button>
+            </header>
+
+            <div class="space-y-3 p-4">
             <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true">
-                        </span>ENTRÉE
-                    </span>
-                </div>
-                <label for="mercredi-entree" class="sr-only">Entrée du mercredi</label>
-                <select id="mercredi-entree" data-slot="entree" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
- 
-            <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
-                        <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true">
-                        </span>PLAT PRINCIPAL
-                    </span>
-                </div>
-                <label for="mercredi-plat" class="sr-only">Plat principal du mercredi</label>
-                <select id="mercredi-plat" data-slot="plat" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
- 
-            <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
-                        <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true">
-                        </span>DESSERT
-                    </span>
-                </div>
-                <label for="mercredi-dessert" class="sr-only">Dessert du mercredi</label>
-                <select id="mercredi-dessert" data-slot="dessert" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
-      </div>
- 
-        <footer class="border-t border-stone-200 px-4 py-3">
-            <p class="flex items-center justify-between text-sm">
-                <span class="font-medium text-stone-600">Total du jour</span>
-                <span><strong class="day-total">0 DH</strong> 
-                    <span class="text-stone-400">/ 50 DH max</span>
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>ENTRÉE
                 </span>
-            </p>
-            <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar" aria-label="Budget du mercredi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
-                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
+              </div>
+              <label for="mercredi-entree" class="sr-only">Entrée du mercredi</label>
+              <select id="mercredi-entree" data-slot="entree"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
             </div>
-        </footer>
-    </article>
- 
-    <article data-day="Jeudi" 
-    class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
-       <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
-            <div class="flex items-center gap-3">
-                <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">
-                Je</span>
-                <div>
-                    <h3 class="font-bold leading-tight">Jeudi</h3>
-                </div>
-            </div>
-       </header>
- 
-       <div class="space-y-3 p-4">
             <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true">
-                        </span>ENTRÉE
-                    </span>
-                </div>
-            
-                <label for="Jeudi-entree" class="sr-only">Entrée du Jeudi</label>
-                <select id="Jeudi-entree" data-slot="entree" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
- 
-            <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
-                        <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true">
-                        </span>PLAT PRINCIPAL
-                    </span>
-                </div>
-                <label for="Jeudi-plat" class="sr-only">Plat principal du mercredi</label>
-                <select id="Jeudi-plat" data-slot="plat" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
- 
-            <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
-                        <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true">
-                        </span>DESSERT
-                    </span>
-                </div>
-                <label for="Jeudi-dessert" class="sr-only">Dessert du Jeudi</label>
-                <select id="Jeudi-dessert" data-slot="dessert" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
-        </div>
- 
-        <footer class="border-t border-stone-200 px-4 py-3">
-
-            <p class="flex items-center justify-between text-sm">
-                <span class="font-medium text-stone-600">Total du jour</span>
-                <span><strong class="day-total">0 DH</strong>  
-                    <span class="text-stone-400">/ 50 DH max</span>
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
+                  <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true"></span>PLAT PRINCIPAL
                 </span>
-            </p>
-            <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar" aria-label="Budget du Jeudi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
-                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
+              </div>
+              <label for="mercredi-plat" class="sr-only">Plat principal du mercredi</label>
+              <select id="mercredi-plat" data-slot="plat"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
             </div>
-        </footer>
-    </article>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
+                  <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>DESSERT
+                </span>
+              </div>
+              <label for="mercredi-dessert" class="sr-only">Dessert du mercredi</label>
+              <select id="mercredi-dessert" data-slot="dessert"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            </div>
 
+            <footer class="border-t border-stone-200 px-4 py-3">
+              <p class="flex items-center justify-between text-sm">
+                <span class="font-medium text-stone-700">Total du jour</span>
+                <span><strong class="day-total">0 DH</strong> <span class="text-stone-600">/ 50 DH max</span></span>
+              </p>
+              <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar"
+                   aria-label="Budget du mercredi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
+              </div>
+            </footer>
+          </article>
 
-    
-    <article data-day="Vendredi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
- 
-        <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
-            <div class="flex items-center gap-3">
+          <!--JEUDI-->
+          <article data-day="jeudi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
+
+            <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Je</span>
+                <h3 class="font-bold leading-tight">Jeudi</h3>
+              </div>
+              <button type="button" data-action="clear-day" disabled
+                      class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-700 hover:bg-stone-100 disabled:cursor-not-allowed disabled:text-stone-400 disabled:hover:bg-transparent">
+                X
+              </button>
+            </header>
+
+            <div class="space-y-3 p-4">
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>ENTRÉE
+                </span>
+              </div>
+              <label for="jeudi-entree" class="sr-only">Entrée du jeudi</label>
+              <select id="jeudi-entree" data-slot="entree"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
+                  <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true"></span>PLAT PRINCIPAL
+                </span>
+              </div>
+              <label for="jeudi-plat" class="sr-only">Plat principal du jeudi</label>
+              <select id="jeudi-plat" data-slot="plat"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
+                  <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>DESSERT
+                </span>
+              </div>
+              <label for="jeudi-dessert" class="sr-only">Dessert du jeudi</label>
+              <select id="jeudi-dessert" data-slot="dessert"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            </div>
+
+            <footer class="border-t border-stone-200 px-4 py-3">
+              <p class="flex items-center justify-between text-sm">
+                <span class="font-medium text-stone-700">Total du jour</span>
+                <span><strong class="day-total">0 DH</strong> <span class="text-stone-600">/ 50 DH max</span></span>
+              </p>
+              <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar"
+                   aria-label="Budget du jeudi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+                <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
+              </div>
+            </footer>
+          </article>
+
+          <!--VENDREDI-->
+          <article data-day="vendredi" class="overflow-hidden rounded-2xl border border-stone-200 bg-white text-stone-900 shadow-sm">
+
+            <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
+              <div class="flex items-center gap-3">
                 <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Ve</span>
-                <div>
                 <h3 class="font-bold leading-tight">Vendredi</h3>
-                </div>
-            </div>
-        </header>
- 
-        <div class="space-y-3 p-4">
+              </div>
+              <button type="button" data-action="clear-day" disabled
+                      class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-700 hover:bg-stone-100 disabled:cursor-not-allowed disabled:text-stone-400 disabled:hover:bg-transparent">
+                X
+              </button>
+            </header>
+
+            <div class="space-y-3 p-4">
             <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true">    
-                        </span>ENTRÉE
-                    </span>
-                </div>
-                <label for="Vendredi-entree" class="sr-only">Entrée du Vendredi</label>
-                <select id="Vendredi-entree" data-slot="entree" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
- 
-            <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
-                        <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true">
-                        </span>PLAT PRINCIPAL
-                    </span>
-                </div>
-                
-                <label for="Vendredi-plat" class="sr-only">Plat principal du Vendredi</label>
-                <select id="Vendredi-plat" data-slot="plat" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
- 
-            <div class="rounded-xl border border-dashed border-stone-300 p-3">
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
-                        <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true">
-                        </span>DESSERT
-                    </span>
-                </div>
-                <label for="Vendredi-dessert" class="sr-only">Dessert du Vendredi</label>
-                <select id="Vendredi-dessert" data-slot="dessert" class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
-                    <option value="">En réserve</option>
-                </select>
-            </div>
-        </div>
- 
-        <footer class="border-t border-stone-200 px-4 py-3">
-            <p class="flex items-center justify-between text-sm">
-                <span class="font-medium text-stone-600">
-                Total du jour</span>
-                <span><strong class="day-total">0 DH</strong> 
-                      <span class="text-stone-400">/ 50 DH max</span>
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true"></span>ENTRÉE
                 </span>
-            </p>
-            
-            <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar" aria-label="Budget du Vendredi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+              </div>
+              <label for="vendredi-entree" class="sr-only">Entrée du vendredi</label>
+              <select id="vendredi-entree" data-slot="entree"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-800">
+                  <span class="h-2 w-2 rounded-full bg-orange-500" aria-hidden="true"></span>PLAT PRINCIPAL
+                </span>
+              </div>
+              <label for="vendredi-plat" class="sr-only">Plat principal du vendredi</label>
+              <select id="vendredi-plat" data-slot="plat"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            <div class="rounded-xl border border-dashed border-stone-300 p-3">
+              <div class="mb-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-bold text-violet-800">
+                  <span class="h-2 w-2 rounded-full bg-violet-500" aria-hidden="true"></span>DESSERT
+                </span>
+              </div>
+              <label for="vendredi-dessert" class="sr-only">Dessert du vendredi</label>
+              <select id="vendredi-dessert" data-slot="dessert"
+                      class="w-full rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-semibold">
+                <option value="">En réserve</option>
+              </select>
+            </div>
+            </div>
+
+            <footer class="border-t border-stone-200 px-4 py-3">
+              <p class="flex items-center justify-between text-sm">
+                <span class="font-medium text-stone-700">Total du jour</span>
+                <span><strong class="day-total">0 DH</strong> <span class="text-stone-600">/ 50 DH max</span></span>
+              </p>
+              <div class="mt-2 h-1.5 w-full rounded-full bg-stone-200" role="progressbar"
+                   aria-label="Budget du vendredi" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
                 <div class="h-1.5 rounded-full bg-emerald-500" style="width: 0%"></div>
-            </div>
-        </footer>
-    </article>
-  
+              </div>
+            </footer>
+          </article>
 
-                </div>
-            </section>
+        </div>
+      </section>
 
+    </div>
+  </main>
 
-            </section>
+  <footer class="py-6 text-center text-sm text-stone-600">
+    <p>&copy; 2026 YouCode</p>
+  </footer>
+
+  <!--Modale (ajout / modification)-->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+    <div id="modal-box"
+         class="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-6 text-stone-900"
+         role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+      <div class="flex items-center justify-between gap-3">
+        <h2 id="modal-title" class="text-xl font-bold">Nouvelle recette</h2>
+        <button type="button" id="btn-modal-close" aria-label="Fermer la fenêtre"
+                class="rounded-lg px-3 py-1 text-2xl hover:bg-stone-100">x</button>
+      </div>
+      <p class="text-sm text-stone-600">Renseignez les informations du plat.</p>
+
+      <form id="recipe-form" novalidate class="mt-4 space-y-5">
+
+        <div>
+          <label for="recipe-name" class="mb-1 block text-sm font-semibold">
+            Nom du plat <span class="text-red-700" aria-hidden="true">*</span>
+          </label>
+          <input type="text" id="recipe-name" name="name" data-field="name" required autocomplete="off"
+                 placeholder="Ex. Tajine de poulet" aria-describedby="error-name"
+                 class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3 placeholder:text-stone-500 aria-invalid:border-red-600 aria-invalid:bg-red-50 focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
+          <p id="error-name" class="mt-1 hidden text-sm text-red-700"></p>
         </div>
 
-
-        <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">            
-            <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
-
-                <h2 class="text-xl font-bold">Nouvelle recette</h2>
-                <p class="text-sm text-stone-500">Renseignez les informations du plat.</p>
-
-                <form id="recipe-form" novalidate class="space-y-5 p-6">
-
-
-                    <div>
-                        <label for="name" class="mb-1 block text-sm font-semibold">
-                            Nom du plat
-                            <span class="text-red-600" aria-hidden="true">*</span>
-                        </label>
-                        <div class="relative">
-                            <input type="text" id="input-recipt-name" minlength="3" maxlength="30" name="name" required placeholder="Ex. Tajine de poulet"
-                                aria-describedby="error-name"
-                                class="w-full rounded-xl border border-stone-300 px-3 py-3 pr-16 placeholder:text-stone-500 aria-invalid:border-red-500  aria-invalid:bg-red-50 focus:outline-2  focus:outline-offset-2  focus:outline-emerald-600">
-
-                        </div>
-                        <p id="error-name" class="mt-1 hidden text-sm text-red-700"></p>
-
-                        <div>
-                            <label for="price" type="number" class="mb-1 block text-sm font-semibold">
-                                Prix (DH)
-                                <span class="text-red-600" aria-hidden="true">*</span>
-                            </label>
-                            <input type="number" id="input-recipt-price"  min="5" max="50" name="price" required inputmode="decimal"
-                                autocomplete="off" placeholder="Ex. 25" aria-describedby="error-price" class="w-full rounded-xl border border-stone-300 px-3 py-3 placeholder:text-stone-500
-                                aria-invalid:border-red-500 
-                                aria-invalid:bg-red-50
-                                focus:outline-2 
-                                focus:outline-offset-2
-                                focus:outline-emerald-600">
-                            <p id="error-price" class="mt-1 hidden text-sm text-red-700"></p>
-                        </div>
-
-                        <div>
-                            <label for="category" class="mb-1 block text-sm font-semibold">
-                                Catégorie
-                                <span class="text-red-600" aria-hidden="true">*</span>
-                            </label>
-
-                            <select id="recipt-option-category" name="category" required
-                                aria-describedby="error-category" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
-                                    aria-invalid:border-red-500 aria-invalid:bg-red-50
-                                    focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
-                                <option value="" selected disabled>Sélectionner</option>
-                                <option value="entree">Entrée</option>
-                                <option value="plat">Plat principal</option>
-                                <option value="dessert">Dessert</option>
-                            </select>
-
-                            <p id="error-category" class="mt-1 hidden text-sm text-red-700"></p>
-                        </div>
-
-                        <div>
-                            <label for="Badge qualitatif" class="mb-1 block text-sm font-semibold">
-                                Badge qualitatif
-                                <span class="text-red-600" aria-hidden="true">*</span>
-                            </label>
-
-                            <select id="recipt-option-qalific" name="category" required aria-describedby="error-Badge"
-                                class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3
-                                    aria-invalid:border-red-500 aria-invalid:bg-red-50
-                                    focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
-                                <option value="" selected disabled>Sélectionner</option>
-                                <option value="bio">Bio</option>
-                                <option value="vegetarien">Végétarien</option>
-                                <option value="classique">Classique</option>
-                            </select>
-
-                            <p id="error-Badge" class="mt-1 hidden text-sm text-red-700"></p>
-                        </div>
-
-
-
-                        <div class="flex justify-end gap-3 border-t border-stone-200 pt-5">
-                            <button type="button" id="btn-recipt-cancel"
-                                class="rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-stone-100">
-                                Annuler
-                            </button>
-
-                            <button type="submit" id="btn-recipt-submit" class="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800
-                                disabled:cursor-not-allowed
-                                disabled:bg-stone-200
-                                disabled:text-stone-500 
-                                disabled:hover:bg-stone-200">
-                                ✓ Valider
-                            </button>
-                        </div>
-                </form>
-            </div>
+        <div>
+          <label for="recipe-price" class="mb-1 block text-sm font-semibold">
+            Prix (DH) <span class="text-red-700" aria-hidden="true">*</span>
+          </label>
+          <input type="text" id="recipe-price" name="price" data-field="price" required inputmode="decimal" autocomplete="off"
+                 placeholder="Ex. 25" aria-describedby="error-price"
+                 class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3 placeholder:text-stone-500 aria-invalid:border-red-600 aria-invalid:bg-red-50 focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
+          <p id="error-price" class="mt-1 hidden text-sm text-red-700"></p>
         </div>
 
-    </main>
+        <div>
+          <label for="recipe-category" class="mb-1 block text-sm font-semibold">
+            Catégorie <span class="text-red-700" aria-hidden="true">*</span>
+          </label>
+          <select id="recipe-category" name="category" data-field="category" required aria-describedby="error-category"
+                  class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3 placeholder:text-stone-500 aria-invalid:border-red-600 aria-invalid:bg-red-50 focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
+            <option value="" selected disabled>Sélectionner</option>
+            <option value="entree">Entrée</option>
+            <option value="plat">Plat principal</option>
+            <option value="dessert">Dessert</option>
+          </select>
+          <p id="error-category" class="mt-1 hidden text-sm text-red-700"></p>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 Youcode</p>
+        <div>
+          <label for="recipe-badge" class="mb-1 block text-sm font-semibold">
+            Badge qualitatif <span class="text-red-700" aria-hidden="true">*</span>
+          </label>
+          <select id="recipe-badge" name="badge" data-field="badge" required aria-describedby="error-badge"
+                  class="w-full rounded-xl border border-stone-300 bg-white px-3 py-3 placeholder:text-stone-500 aria-invalid:border-red-600 aria-invalid:bg-red-50 focus:outline-2 focus:outline-offset-2 focus:outline-emerald-600">
+            <option value="" selected disabled>Sélectionner</option>
+            <option value="bio">Bio</option>
+            <option value="vegetarien">Végétarien</option>
+            <option value="classique">Classique</option>
+          </select>
+          <p id="error-badge" class="mt-1 hidden text-sm text-red-700"></p>
+        </div>
 
-    </footer>
+        <div class="flex justify-end gap-3 border-t border-stone-200 pt-5">
+          <button type="button" id="btn-cancel"
+                  class="rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-stone-100">
+            Annuler
+          </button>
+          <button type="submit" id="btn-submit" disabled
+                  class="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800 disabled:cursor-not-allowed disabled:bg-stone-200 disabled:text-stone-600 disabled:hover:bg-stone-200">
+            Valider
+          </button>
+        </div>
 
-    <script src="script.js"></script>
+      </form>
+    </div>
+  </div>
 
+  <!--toasts-->
+  <div id="toast-container" class="fixed right-4 top-4 z-[100] flex flex-col gap-3" aria-live="polite"></div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

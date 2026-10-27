@@ -1,13 +1,8 @@
-/* .img_logo {
-    width: 44px;
-    height: 44px;
-} */
- .container-article  article
- {
-    
-    border: 1px solid lightgray;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 3px 2px 3px 1px lightgray;
- }
+.container-article article {
+  border: 1px solid lightgray;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 3px 2px 3px 1px lightgray;
+  min-width: 0;
+}
