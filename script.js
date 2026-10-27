@@ -12,12 +12,21 @@ const categoryColors = {
   plat: "bg-orange-100 text-orange-800",
   dessert: "bg-pink-100 text-pink-800"
 };
+
 const badgeColors = {
   bio: "bg-lime-100 text-lime-800",
   vegetarien: "bg-teal-100 text-teal-800",
   classique: "bg-stone-100 text-stone-700"
 };
  
+
+function saveData() {
+  localStorage.setItem("recipies", JSON.stringify(recipies));
+}
+
+
+
+
 //Ajouter
 const btnAjouter = document.getElementById('Ajouter');
 const modal = document.getElementById('modal');
@@ -98,26 +107,33 @@ function capitalize(text) {
   return text.charAt(0).toUpperCase() +  text.slice(1);
 }
 
+function escapeHtml (text){
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML.replace(/"/g, "&quot;");
+}
 
 function showReserve() {
   reserveList.innerHTML ="";
 
   if(recipies.length === 0)
   {
-    reserveList.HTML= '<li class="py-6 text-center text-sm text-stone-500">Aucune recette dans la réserve</li>';
+    reserveList.innerHTML= '<li class="py-6 text-center text-sm text-stone-500">Aucune recette dans la réserve</li>';
   }
   //on passe sur chaque recette du premiere a la dernier 
 
   for(let i=0; i<recipies.length; i++)
   {
     const recipe= recipies[i];
-    const locked= recipe.day !== null; //si elle est deja reservee
+    const locked= recipe.day !== null;
+    const name = escapeHtml(recipe.name);
+     //si elle est deja reservee
     
     //le texte du bas seulement n est pas locked dans ce cas
 
     let assignedText = "";
     if(locked){
-       assignedText = '<p class="mt-2 rounded-lg border border-stone-200 px-2 text-sm text-stone-600">'
+      assignedText = '<p class="mt-2 rounded-lg border border-stone-200 px-2 text-sm text-stone-600">'
                       + '✓ [Assigné : ' + capitalize(recipe.day) + '-' + slotNames[recipe.slot] + ']</p>';
     }
 
@@ -145,19 +161,49 @@ function showReserve() {
                   ${badgeNames[recipe.badge]}</span>
                         </p>
                         <p class="flex gap-1">
-                            <button type="button" 
+                            <button type="button"
                             data-action="edit"
                             aria-label="Modifier ${name}" ${disabled}
-                            class="px-1 disabled:cursor-not-allowed
+                            class="px-1 text-gray-400 hover:text-gray-700
+                            transition-colors disabled:cursor-not-allowed
                             disabled:opacity-40">
-                            ✏️</button>
-                            <button type="button" 
-                            data-action="delete"
-                            aria-label="Supprimer ${name}" ${disabled}
-                            class="px-1
-                            disabled:cursor-not-allowed
-                            disabled:opacity-40">
-                            🗑️</button>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                            width="18" height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L10 16l-4 1 1-4Z"/>
+                            </svg>
+                            </button>
+                            
+                            <button type="button"
+                                data-action="delete"
+                                aria-label="Supprimer ${name}" ${disabled}
+                                class="px-1 text-gray-400 hover:text-red-600
+                                transition-colors disabled:cursor-not-allowed
+                                disabled:opacity-40">
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="18" height="18"
+                                     viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <path d="M3 6h18"/>
+                                    <path d="M8 6V4h8v2"/>
+                                    <path d="m19 6-1 14H6L5 6"/>
+                                    <path d="M10 11v5"/>
+                                    <path d="M14 11v5"/>
+                                </svg>
+                            </button>                            
                         </p>
                         </div>
 
@@ -177,7 +223,7 @@ for (let i=0; i < recipies.length; i++)
   available = available + 1;
   }
 }
-  reserveCount.textContent= available;
+  reserveCount.textContent = available;
 }
 //remplier select en planning
 function fillSelects() {
@@ -192,6 +238,7 @@ function fillSelects() {
     const slot = select.dataset.slot;
     
     select.innerHTML = '<option value="">En réserve</option>';
+    let chosen = null;
 
     //boucle pour chaque recette
     for(let i=0; i< recipies.length; i++)
@@ -205,13 +252,15 @@ function fillSelects() {
         option.textContent = recipe.name + " . "+ recipe.price + " DH";
         if(isHere) {
           option.selected = true;
+          chosen = recipe;
         }
         select.appendChild(option);
       }
     }
+    showSlotInfo(select, chosen)
   }
 } 
-
+loadData();
 showReserve();
 fillSelects();
 
@@ -223,19 +272,19 @@ if (planningList === null)
   console.log("planning-list introuvable");
 }
 else{
-  planningList.addEventListeneur("change", function(event){
+  planningList.addEventListener("change", function(event){
     const select = event.target;
     if(!select.dataset.slot)
     {
       return;
     }
 
-    const day = select.closet("[data-day]").dataset.day;
+    const day = select.closest("[data-day]").dataset.day;
     const slot = select.dataset.slot;
     
-    for(let i=0; i<recipies.length; i++)
+    for(let i=0; i< recipies.length; i++)
     {
-      if (recipies[i].day === day && recipies[i].slot === sloy)
+      if (recipies[i].day === day && recipies[i].slot === slot)
       {
         recipies[i].day = null ;
         recipies[i].slot = null ;
@@ -244,13 +293,16 @@ else{
 
     if (select.value !== ""){
       for(let i=0; i<recipies.length; i++){
-        if (String(recipies[i].id) === selesct.value){
+        if (String(recipies[i].id) === select.value){
           recipies[i].day = day;
           recipies[i].slot = slot;
         }
       }
     }
-    showReserve();
-    fillSelects();
+  saveData();
+  showReserve();
+  fillSelects();  
   });
 }
+
+

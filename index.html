@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="style3.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-
     <style type="text/tailwindcss">
         @custom-variant dark (&:where(.dark, .dark *));
          .card {
@@ -18,7 +17,6 @@
          }
         </style>
 
-    <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -556,7 +554,8 @@
         </div>
 
 
-<div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">            <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
+        <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">            
+            <div class="w-full max-w-md rounded-2xl bg-white p-6 text-stone-900">
 
                 <h2 class="text-xl font-bold">Nouvelle recette</h2>
                 <p class="text-sm text-stone-500">Renseignez les informations du plat.</p>
@@ -570,7 +569,7 @@
                             <span class="text-red-600" aria-hidden="true">*</span>
                         </label>
                         <div class="relative">
-                            <input type="text" id="input-recipt-name" name="name" placeholder="Ex. Tajine de poulet"
+                            <input type="text" id="input-recipt-name" minlength="10" maxlength="12" name="name" required placeholder="Ex. Tajine de poulet"
                                 aria-describedby="error-name"
                                 class="w-full rounded-xl border border-stone-300 px-3 py-3 pr-16 placeholder:text-stone-500 aria-invalid:border-red-500  aria-invalid:bg-red-50 focus:outline-2  focus:outline-offset-2  focus:outline-emerald-600">
 
@@ -582,7 +581,7 @@
                                 Prix (DH)
                                 <span class="text-red-600" aria-hidden="true">*</span>
                             </label>
-                            <input type="text" id="input-recipt-price" name="price" required inputmode="decimal"
+                            <input type="number" id="input-recipt-price"  min="5" max="50" name="price" required inputmode="decimal"
                                 autocomplete="off" placeholder="Ex. 25" aria-describedby="error-price" class="w-full rounded-xl border border-stone-300 px-3 py-3 placeholder:text-stone-500
                                 aria-invalid:border-red-500 
                                 aria-invalid:bg-red-50
@@ -646,7 +645,6 @@
                                 ✓ Valider
                             </button>
                         </div>
-
                 </form>
             </div>
         </div>
