@@ -48,38 +48,32 @@
 
             <p class="text-sm font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
                 Menu de la semaine</p>
-            <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
+            <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl lg:text-5xl py-10">
                 Une semaine équilibrée, sans dépasser le budget.</h1>
             <span>Composez les menus du lundi au vendredi avec un plafond de 50 DH par jour et par apprenant.</span>
         </section>
 
         <div class="jours/cout">
-            <section class="container-article grid lg:grid-cols-5 gap-4 sm:grid-cols-.2">
-                <article id="reserve">
+            <section class="container-article flex flex-row justify-center items-center gap-5 flex-wrap">
+                <article id="reserve" class="w-55 h-18">
                     <h2 id="titre-reserve">Recettes en réserve <span id="compteur">0</span></h2>
                 </article>
 
-                <article id="jours">
-                    <h2 id="titre-jours">Jours prêts <span id="compteur">0</span></h2>
+                <article id="jours" class="w-55 h-18">
+                    <h2 id="titre-jours" > Jours prêts <span id="compteur">0</span></h2>
                 </article>
 
-                <article id="cout">
-                    <h2 id="titre-cout">Coût du jour <span id="compteur">0</span></h2>
-                </article>
-
-                <article id="semaine">
+                <article id="semaine" class="w-55 h-18">
                     <h2 id="cout_semaine">Coût de la semaine <span id="compteur">0</span></h2>
                 </article>
 
-                <article id="equilibre">
+                <article id="equilibre" class="w-55 h-18">
                     <h2 id="titre_equilibre">Équilibre alimentaire <span id="compteur">0</span></h2>
                 </article>
-
-        </div>
-        </section>
+            </section>
         </div>
 
-        <div class="grid gap-10 py-10 lg:grid-cols-[380px_1fr]">
+        <div class="grid gap-10 py-10 lg:grid-cols-[380px_1fr] ">
             <section id="reserve">
                 <div class="border-b-1 p-3 border-gray-300 ">
                     <div class="flex justify-between">
@@ -141,24 +135,19 @@
 
                     <!-- lundi -->
                     <article data-day="lundi" 
-                    class="overflow-hidden rounded-2xl border border-emerald-300 bg-white text-stone-900 shadow-sm">
-                        <header class="flex items-center justify-between gap-3 border-b border-emerald-200 bg-emerald-50 p-4">
+                    class="overflow-hidden rounded-2xl   bg-white  shadow-sm">
+                        <header class="flex items-center justify-between gap-3 border-b border-stone-200 p-4">
                             <div class="flex items-center gap-3">
 
-                                <span class="grid h-11 w-11 place-items-center rounded-xl bg-emerald-700 font-bold text-white" aria-hidden="true">
-                                Lu</span>
+                               <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" 
+                                    aria-hidden="true">                                Lu</span>
                                 
                                 <div>
                                     <h3 class="font-bold leading-tight">Lundi</h3>
-                                    <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">
-                                    Jour vide</p>
                                 </div>
                 
                             </div>
-                            <button type="button" 
-                            data-action="clear-day" 
-                            disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-500 hover:bg-white hover:text-stone-900">
-                            X</button>
+                            
                         </header>
 
                         <div class="space-y-3 p-4">
@@ -259,13 +248,8 @@
                     aria-hidden="true">Ma</span>
                     <div>
                         <h3 class="font-bold leading-tight">Mardi</h3>
-                        <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">Jour vide</p>
                     </div>
                 </div>
-                <button type="button" 
-                data-action="clear-day" 
-                class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-500 hover:bg-stone-100 hover:text-stone-900">
-                X</button>
            </header>
  
            <div class="space-y-3 p-4">
@@ -338,12 +322,8 @@
                 <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Me</span>
                 <div>
                     <h3 class="font-bold leading-tight">Mercredi</h3>
-                    <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">
-                    Jour vide</p>
                 </div>
             </div>
-            <button type="button" data-action="clear-day" disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-300 disabled:cursor-not-allowed">
-            X</button>
       </header>
  
       <div class="space-y-3 p-4">
@@ -408,11 +388,8 @@
                 Je</span>
                 <div>
                     <h3 class="font-bold leading-tight">Jeudi</h3>
-                    <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">Jour vide</p>
                 </div>
             </div>
-            <button type="button" data-action="clear-day" disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-300 disabled:cursor-not-allowed">
-                X</button>
        </header>
  
        <div class="space-y-3 p-4">
@@ -480,12 +457,8 @@
                 <span class="grid h-11 w-11 place-items-center rounded-xl bg-stone-100 font-bold text-stone-700" aria-hidden="true">Ve</span>
                 <div>
                 <h3 class="font-bold leading-tight">Vendredi</h3>
-                <p class="text-xs font-semibold uppercase tracking-wide text-stone-500">
-                Jour vide</p>
                 </div>
             </div>
-            <button type="button" data-action="clear-day" disabled class="rounded-lg px-2 py-1 text-sm font-semibold text-stone-300 disabled:cursor-not-allowed">
-            X</button>
         </header>
  
         <div class="space-y-3 p-4">
@@ -569,7 +542,7 @@
                             <span class="text-red-600" aria-hidden="true">*</span>
                         </label>
                         <div class="relative">
-                            <input type="text" id="input-recipt-name" minlength="10" maxlength="12" name="name" required placeholder="Ex. Tajine de poulet"
+                            <input type="text" id="input-recipt-name" minlength="3" maxlength="30" name="name" required placeholder="Ex. Tajine de poulet"
                                 aria-describedby="error-name"
                                 class="w-full rounded-xl border border-stone-300 px-3 py-3 pr-16 placeholder:text-stone-500 aria-invalid:border-red-500  aria-invalid:bg-red-50 focus:outline-2  focus:outline-offset-2  focus:outline-emerald-600">
 
