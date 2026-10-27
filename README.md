@@ -1,210 +1,264 @@
-# README: Documentation HTML, CSS Tailwind et JavaScript
+# README : Documentation HTML, CSS Tailwind, JavaScript, Git et Scrum
 
-Les questions-réponses pour les bases de **Tailwind CSS**, les **sélecteurs JavaScript** et les **événements JavaScript**.
+Cette documentation regroupe les questions-réponses essentielles pour réviser les bases du développement web, de Git et de la méthode Scrum.
 
 ## Sommaire
 
 1. [Tailwind CSS](#1-tailwind-css)
-2. [Les sélecteurs JavaScript](#2-les-sélecteurs-javascript)
-3. [Les événements JavaScript](#3-les-événements-javascript)
+2. [Sélecteurs JavaScript](#2-sélecteurs-javascript)
+3. [Événements JavaScript](#3-événements-javascript)
+4. [CSS : unités relatives et Grid](#4-css-unités-relatives-et-grid)
+5. [Git : Merge, Rebase et Pull Request](#5-git-merge-rebase-et-pull-request)
+6. [Scrum : Backlog et Sprint](#6-scrum-backlog-et-sprint)
+7. [Pseudo-code](#7-pseudo-code)
+8. [Bonnes pratiques et débogage](#8-bonnes-pratiques-et-débogage)
+9. [Propagation des événements](#9-propagation-des-événements)
+10. [LocalStorage](#10-localstorage)
+11. [Modules ES6](#11-modules-es6)
 
 ---
 
 ## 1. Tailwind CSS
 
-### Q1. C'est quoi Tailwind CSS ?
+**Q1. C'est quoi Tailwind CSS ?**
 
-**R :** Tailwind CSS est un framework CSS qui permet de styliser une page HTML en utilisant des classes prédéfinies directement dans le HTML.
+**R :** Un framework CSS qui utilise des classes utilitaires directement dans le HTML.
 
-### Q2. Est-ce que Tailwind remplace complètement CSS ?
+**Q2. Tailwind remplace-t-il complètement CSS ?**
 
-**R :** Non. Tailwind génère des styles CSS, et on peut toujours écrire du CSS personnalisé si nécessaire.
+**R :** Non, on peut aussi écrire du CSS personnalisé.
 
-### Q3. Que signifie `p-4` ?
+**Q3. Que signifient `p-4`, `mt-4`, `px-4` et `py-4` ?**
 
-**R :** Ajoute un espacement intérieur (*padding*) sur les quatre côtés.
+**R :** `p-4` : padding sur tous les côtés ; `mt-4` : marge supérieure ; `px-4` : padding horizontal ; `py-4` : padding vertical.
 
-### Q4. Que signifie `mt-4` ?
+**Q4. Que signifient `rounded-lg` et `shadow-md` ?**
 
-**R :** Ajoute une marge extérieure en haut (*margin-top*).
+**R :** `rounded-lg` arrondit les coins ; `shadow-md` ajoute une ombre moyenne.
 
-### Q5. Que signifie `px-4` ?
+**Q5. Que signifient `w-full` et `h-screen` ?**
 
-**R :** Ajoute un espacement intérieur à gauche et à droite.
+**R :** `w-full` définit une largeur de 100 % ; `h-screen` définit une hauteur correspondant à la hauteur de la fenêtre.
 
-### Q6. Que signifie `py-4` ?
+## 2. Sélecteurs JavaScript
 
-**R :** Ajoute un espacement intérieur en haut et en bas.
+**Q1. À quoi servent les sélecteurs ?**
 
-### Q7. Que signifie `rounded-lg` ?
+**R :** À sélectionner des éléments HTML pour les manipuler avec JavaScript.
 
-**R :** Arrondit les coins d'un élément.
+**Q2. Quelle est la différence entre `querySelector()` et `getElementById()` ?**
 
-### Q8. Que signifie `shadow-md` ?
+**R :** `querySelector()` accepte un sélecteur CSS ; `getElementById()` sélectionne un élément par son ID.
 
-**R :** Ajoute une ombre de taille moyenne.
+**Q3. Quelle est la différence entre `querySelector()` et `querySelectorAll()` ?**
 
-### Q9. Que signifie `w-full` ?
+**R :** Le premier retourne le premier élément correspondant ; le second retourne tous les éléments correspondants dans une liste statique.
 
-**R :** Définit une largeur de 100 % de l'espace disponible.
+**Q4. Quelle est la différence entre `getElementsByClassName()` et `querySelectorAll()` ?**
 
-### Q10. Que signifie `h-screen` ?
+**R :** `getElementsByClassName()` retourne une collection dynamique ; `querySelectorAll()` retourne une liste statique.
 
-**R :** Définit une hauteur correspondant à la hauteur de la fenêtre du navigateur.
+**Q5. Comment sélectionner une classe ?**
 
----
+**R :** Avec `document.querySelector(".description")` ou `document.getElementsByClassName("description")`. Le point est utilisé uniquement dans le sélecteur CSS.
 
-## 2. Les sélecteurs JavaScript
+## 3. Événements JavaScript
 
-### Q1. À quoi servent les sélecteurs en JavaScript ?
+**Q1. C'est quoi un événement ?**
 
-**R :** Ils permettent de sélectionner des éléments HTML pour les modifier avec JavaScript.
+**R :** Une action détectée par le navigateur, comme un clic, une saisie ou l'envoi d'un formulaire.
 
-### Q2. Quelle est la différence entre `querySelector()` et `getElementById()` ?
+**Q2. Quelle est la différence entre `onclick` et `addEventListener()` ?**
 
-**R :**
-- `querySelector()` utilise un sélecteur CSS.
-- `getElementById()` sélectionne un élément grâce à son ID.
+**R :** `onclick` permet d'affecter un gestionnaire de clic ; `addEventListener()` permet d'ajouter plusieurs gestionnaires.
 
-**Exemples :**
+**Q3. Quelle est la différence entre `click` et `submit` ?**
+
+**R :** `click` détecte un clic ; `submit` détecte la soumission d'un formulaire, y compris par certaines actions au clavier.
+
+**Q4. À quoi sert `event.preventDefault()` ?**
+
+**R :** À empêcher le comportement par défaut du navigateur, par exemple l'envoi automatique d'un formulaire.
+
+**Q5. Quelle est la différence entre `input` et `change` ?**
+
+**R :** `input` détecte les modifications pendant la saisie ; `change` détecte une modification validée selon le type de champ.
+
+**Q6. À quoi servent `keydown` et `keyup` ?**
+
+**R :** `keydown` se déclenche lorsqu'une touche est pressée ; `keyup` lorsqu'elle est relâchée.
+
+**Q7. À quoi servent `focus` et `blur` ?**
+
+**R :** `focus` indique qu'un élément reçoit le focus ; `blur` indique qu'il le perd.
+
+**Q8. À quoi sert `event.target` ?**
+
+**R :** À identifier l'élément à l'origine de l'événement.
+
+## 4. CSS : unités relatives et Grid
+
+**Q1. Que sont les unités relatives ?**
+
+**R :** Des unités dont la valeur dépend d'une référence, comme la taille de police ou la fenêtre.
+
+**Q2. Que signifient `rem`, `em`, `%`, `vw` et `vh` ?**
+
+**R :** `rem` dépend de la taille de police de la racine ; `em` dépend de la taille de police de référence ; `%` dépend d'une dimension de référence ; `vw` représente 1 % de la largeur de la fenêtre ; `vh` représente 1 % de sa hauteur.
+
+**Q3. C'est quoi CSS Grid ?**
+
+**R :** Un système de mise en page qui organise les éléments en lignes et en colonnes.
+
+**Q4. Comment activer Grid ?**
+
+**R :** Avec `display: grid;`.
+
+**Q5. À quoi servent `grid-template-columns`, `gap` et `1fr` ?**
+
+**R :** `grid-template-columns` définit les colonnes ; `gap` définit les espaces ; `1fr` représente une fraction de l'espace disponible.
+
+**Q6. Quelle est la différence entre Grid et Flexbox ?**
+
+**R :** Grid organise principalement les éléments en deux dimensions ; Flexbox les organise principalement sur un axe.
+
+## 5. Git : Merge, Rebase et Pull Request
+
+**Q1. C'est quoi `git merge` ?**
+
+**R :** Une commande qui fusionne les modifications d'une branche dans une autre.
+
+**Q2. C'est quoi `git rebase` ?**
+
+**R :** Une commande qui replace les commits d'une branche sur une nouvelle base et réécrit leur historique.
+
+**Q3. Quelle est la différence entre Merge et Rebase ?**
+
+**R :** Merge conserve l'historique des branches ; Rebase réorganise l'historique des commits concernés.
+
+**Q4. C'est quoi une Pull Request ?**
+
+**R :** Une demande de révision et d'intégration des modifications d'une branche dans une autre.
+
+**Q5. Quelle est la différence entre `git pull` et Pull Request ?**
+
+**R :** `git pull` récupère et intègre les modifications distantes ; une Pull Request permet de proposer des modifications pour révision et fusion.
+
+**Q6. C'est quoi un conflit Git ?**
+
+**R :** Un conflit apparaît lorsque Git ne peut pas fusionner automatiquement certaines modifications incompatibles.
+
+## 6. Scrum : Backlog et Sprint
+
+**Q1. C'est quoi le Product Backlog ?**
+
+**R :** La liste priorisée des fonctionnalités, améliorations et tâches du produit.
+
+**Q2. C'est quoi le Sprint Backlog ?**
+
+**R :** L'objectif du Sprint, les éléments sélectionnés et le plan de travail pour les réaliser.
+
+**Q3. Quelle est la différence entre les deux ?**
+
+**R :** Le Product Backlog concerne l'ensemble du produit ; le Sprint Backlog concerne le Sprint en cours.
+
+**Q4. C'est quoi un Sprint ?**
+
+**R :** Une période de travail limitée pendant laquelle l'équipe vise un objectif précis.
+
+## 7. Pseudo-code
+
+**Q1. C'est quoi le pseudo-code ?**
+
+**R :** Une description simplifiée des étapes d'un algorithme, sans syntaxe stricte d'un langage.
+
+**Q2. Pourquoi utiliser le pseudo-code ?**
+
+**R :** Pour organiser la logique avant de programmer.
+
+**Q3. Quels sont ses éléments principaux ?**
+
+**R :** Les variables, les conditions, les boucles et les instructions.
+
+## 8. Bonnes pratiques et débogage
+
+**Q1. C'est quoi le débogage ?**
+
+**R :** Le processus qui consiste à identifier et corriger les erreurs d'un programme.
+
+**Q2. À quoi sert `console.log()` ?**
+
+**R :** À afficher des valeurs dans la console pour vérifier le comportement du code.
+
+**Q3. Quelles sont les bonnes pratiques en programmation ?**
+
+**R :** Utiliser des noms clairs, éviter les répétitions, organiser le code et tester régulièrement.
+
+**Q4. Pourquoi valider les données d'un formulaire ?**
+
+**R :** Pour vérifier que les données saisies respectent les règles attendues.
+
+## 9. Propagation des événements
+
+**Q1. C'est quoi la propagation d'un événement ?**
+
+**R :** Le parcours d'un événement à travers les éléments du DOM.
+
+**Q2. C'est quoi le bubbling ?**
+
+**R :** La remontée de l'événement de l'élément cible vers ses parents.
+
+**Q3. À quoi sert `event.stopPropagation()` ?**
+
+**R :** À empêcher l'événement de continuer sa propagation.
+
+**Q4. C'est quoi la délégation d'événements ?**
+
+**R :** Le fait de placer un gestionnaire sur un parent pour gérer les événements de ses enfants.
+
+## 10. LocalStorage
+
+**Q1. C'est quoi `localStorage` ?**
+
+**R :** Un stockage du navigateur qui conserve des données sous forme de chaînes de caractères.
+
+**Q2. Comment enregistrer, récupérer et supprimer une donnée ?**
+
+**R :** Avec `setItem()`, `getItem()` et `removeItem()`.
+
+**Q3. Comment conserver un tableau ou un objet ?**
+
+**R :** Utiliser `JSON.stringify()` pour l'enregistrer et `JSON.parse()` pour le récupérer.
 
 ```javascript
-document.querySelector("#titre");
-document.getElementById("titre");
+localStorage.setItem("recettes", JSON.stringify(recettes));
+
+const recettesSauvegardees =
+  JSON.parse(localStorage.getItem("recettes")) || [];
 ```
 
-### Q3. Quelle est la différence entre `querySelector()` et `querySelectorAll()` ?
+**Q4. Les données persistent-elles après la fermeture du navigateur ?**
 
-**R :**
-- `querySelector()` retourne le premier élément correspondant.
-- `querySelectorAll()` retourne tous les éléments correspondants sous forme de liste statique.
+**R :** Généralement oui, jusqu'à leur suppression ou celle des données du site.
 
-### Q4. Quelle est la différence entre `getElementById()` et `getElementsByClassName()` ?
+## 11. Modules ES6
 
-**R :**
-- `getElementById()` sélectionne un élément par son ID.
-- `getElementsByClassName()` sélectionne les éléments qui possèdent une classe donnée.
+**Q1. C'est quoi un module JavaScript ?**
 
-### Q5. Faut-il utiliser `.` avec `getElementsByClassName()` ?
+**R :** Un fichier qui permet d'organiser et de partager du code.
 
-**R :** Non. On écrit directement le nom de la classe, sans point.
+**Q2. À quoi servent `export` et `import` ?**
 
-```javascript
-document.getElementsByClassName("description");
-```
+**R :** `export` expose une fonctionnalité ; `import` permet de la récupérer dans un autre module.
 
-### Q6. Quelle est la différence entre `querySelectorAll()` et `getElementsByClassName()` ?
+**Q3. Quelle est la différence entre `export default` et un export nommé ?**
 
-**R :**
-- `querySelectorAll()` retourne une liste statique qui ne se met pas automatiquement à jour.
-- `getElementsByClassName()` retourne une collection dynamique qui se met à jour lorsque les éléments correspondants changent.
+**R :** `export default` définit un export par défaut ; les exports nommés permettent d'exporter plusieurs éléments par leur nom.
 
-### Q7. Quelle méthode choisir pour sélectionner facilement un élément avec un sélecteur CSS ?
+**Q4. Comment activer les modules dans HTML ?**
 
-**R :** `querySelector()`, car il accepte les ID, les classes, les balises et les sélecteurs CSS plus complexes.
+**R :** Avec `<script type="module" src="main.js"></script>`.
 
----
+**Q5. Pourquoi utiliser les modules ?**
 
-## 3. Les événements JavaScript
-
-### Q1. C'est quoi un événement en JavaScript ?
-
-**R :** Un événement est une action qui se produit sur une page web, comme un clic, une saisie au clavier ou l'envoi d'un formulaire.
-
-### Q2. À quoi sert `onclick` ?
-
-**R :** `onclick` permet d'exécuter une action lorsqu'un élément est cliqué.
-
-```javascript
-bouton.onclick = function () {
-    alert("Bonjour !");
-};
-```
-
-### Q3. À quoi sert `addEventListener()` ?
-
-**R :** Cette méthode permet d'écouter un événement et d'exécuter une fonction lorsque cet événement se produit.
-
-```javascript
-bouton.addEventListener("click", function () {
-    alert("Bonjour !");
-});
-```
-
-### Q4. Quelle est la différence entre `onclick` et `addEventListener()` ?
-
-**R :**
-- `onclick` : une nouvelle affectation remplace la fonction précédente.
-- `addEventListener()` : permet d'ajouter plusieurs fonctions au même événement.
-
-### Q5. À quoi sert l'événement `submit` ?
-
-**R :** Il permet de détecter la soumission d'un formulaire HTML.
-
-### Q6. Quelle est la différence entre `click` et `submit` ?
-
-**R :**
-- `click` détecte le clic sur un élément.
-- `submit` détecte l'envoi du formulaire.
-
-### Q7. Sur quel élément utilise-t-on généralement `submit` ?
-
-**R :** Sur la balise `<form>`.
-
-### Q8. Que signifie `event.preventDefault()` ?
-
-**R :** Cette méthode empêche le comportement par défaut du navigateur, par exemple le rechargement de la page lors de la soumission d'un formulaire.
-
-```javascript
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-});
-```
-
-### Q9. Pourquoi utiliser `submit` plutôt que `click` pour un formulaire ?
-
-**R :** Parce que `submit` détecte aussi la soumission au clavier, par exemple avec la touche Entrée, et pas uniquement le clic sur le bouton.
-
-### Q10. À quoi sert l'événement `input` ?
-
-**R :** Il détecte les modifications de la valeur d'un champ pendant la saisie.
-
-### Q11. Quelle est la différence entre `input` et `change` ?
-
-**R :**
-- `input` : se déclenche au fur et à mesure de la saisie.
-- `change` : se déclenche lorsque la modification est validée, selon le type de champ.
-
-### Q12. Quelle est la différence entre `keydown` et `keyup` ?
-
-**R :**
-- `keydown` : se déclenche lorsqu'une touche est pressée.
-- `keyup` : se déclenche lorsqu'une touche est relâchée.
-
-### Q13. À quoi sert `mouseover` ?
-
-**R :** Il se déclenche lorsque la souris entre sur un élément.
-
-### Q14. À quoi sert `mouseout` ?
-
-**R :** Il se déclenche lorsque la souris quitte un élément.
-
-### Q15. À quoi sert `focus` ?
-
-**R :** Il se déclenche lorsqu'un champ reçoit le focus, par exemple quand on clique dessus pour écrire.
-
-### Q16. À quoi sert `blur` ?
-
-**R :** Il se déclenche lorsqu'un élément perd le focus, par exemple lorsqu'on quitte un champ de saisie.
-
-### Q17. À quoi sert `event.target` ?
-
-**R :** Il désigne l'élément à l'origine de l'événement.
-
-**Exemple :**
-
-```javascript
-document.addEventListener("click", function (event) {
-    console.log(event.target);
-});
-```
+**R :** Pour séparer les responsabilités, réutiliser le code et faciliter la maintenance.
